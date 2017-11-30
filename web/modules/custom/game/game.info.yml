@@ -1,0 +1,7 @@
+name: Game
+type: module
+description: 'The Game Engines basic functions and entities.'
+package: Field Services Management Platform
+core: 8.x
+hidden: false
+
