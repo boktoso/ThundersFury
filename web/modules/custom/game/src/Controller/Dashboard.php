@@ -13,7 +13,6 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Render\HtmlResponse;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Drupal\customerportal\Plugin\LookupData;
 
 class Dashboard extends ControllerBase
 {
