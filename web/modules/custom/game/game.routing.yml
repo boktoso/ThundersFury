@@ -3,3 +3,5 @@ game_dashboard:
   defaults:
     _controller: '\Drupal\game\Controller\Dashboard::content'
     _title: 'Dashboard'
+  requirements:
+    [NONE]
