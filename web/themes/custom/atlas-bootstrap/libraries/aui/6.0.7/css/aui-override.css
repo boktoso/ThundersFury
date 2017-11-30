@@ -1,0 +1,58 @@
+.aui-dialog2-footer{
+  height: unset;
+}
+
+.header-primary {
+  color: #ffffff;
+  background-color: #34495e;
+  border-color: #34495e;
+}
+.header-site {
+  color: #ffffff;
+  background-color: #ff6120;
+  border-color: #ff6120;
+}
+.header-hands {
+  color: #ffffff;
+  background-color: #1561cb;
+  border-color: #1561cb;
+}
+.header-success {
+  color: #ffffff;
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+.header-info {
+   color: #ffffff;
+   background-color: #5a5b9f;
+   border-color: #5a5b9f;
+ }
+.header-warning {
+  color: #ffffff;
+  background-color: #ffba27;
+  border-color: #ffba27;
+}
+.header-danger {
+  color: #ffffff;
+  background-color: #c0392b;
+  border-color: #c0392b;
+}
+.header-link {
+  color: #34495e;
+  font-weight: normal;
+  border-radius: 0;
+}
+
+@media screen and (max-width: 768px){
+  .aui-dialog2-footer-hint, .aui-dialog2-header-main{
+    white-space: initial;
+  }
+
+  .aui-dialog2-footer-actions{
+    float: initial;
+  }
+
+  .aui-dialog2-footer-actions .btn{
+    width: initial;
+  }
+}

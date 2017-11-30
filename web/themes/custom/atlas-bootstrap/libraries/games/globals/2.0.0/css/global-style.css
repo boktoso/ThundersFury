@@ -1,0 +1,37 @@
+input[type="file"]{
+  height: unset;
+}
+
+.pointer-click{
+  cursor: pointer;
+}
+
+.fileRowName {
+  word-break: break-all;
+}
+
+.form-control[disabled] {
+  background-color: #ccc;
+}
+
+
+@media all and (max-width: 767px){
+
+  .tab-data h3 {
+    font-weight: bold;
+  }
+
+  .cform-field .cform-label {
+    font-weight: 600;
+  }
+
+  .activity-stream {
+    margin: 0;
+  }
+}
+
+@media all and (max-width: 350px){
+  .hidden-350 {
+      display: none;
+  }
+}

@@ -1,0 +1,66 @@
+{#
+/**
+ * @file
+ * Default theme implementation for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ * - icon: An icon.
+ * - input_group: Flag to display as an input group.
+ * - icon_position: Where an icon should be displayed.
+ * - prefix: Markup to display before the input element.
+ * - suffix: Markup to display after the input element.
+ * - type: The type of input.
+ *
+ * @ingroup templates
+ *
+ * @see \Drupal\bootstrap\Plugin\Preprocess\Input
+ * @see template_preprocess_input()
+ */
+#}
+{% spaceless %}
+{% set isDynDateTime = false %}
+{% set isDynDateOnly = false %}
+  {% if input_group %}
+      {% for attribute in attributes.class %}
+        {% if 'dynamic-date-time' in attribute %}
+            {% set isDynDateTime = true %}
+        {% elseif 'dynamic-date-only' in attribute %}
+            {% set isDynDateOnly = true %}
+        {% endif %}
+      {% endfor %}
+
+      {% if isDynDateTime == true %}
+        <div class="input-group DTPicker">
+      {% elseif isDynDateOnly == true %}
+        <div class="input-group DPicker">
+      {% else %}
+        <div class="input-group">
+      {% endif %}
+  {% endif %}
+
+  {% if prefix %}
+    {{ prefix }}
+  {% endif %}
+
+  {% block input %}
+    <input{{ attributes }} />
+  {% endblock %}
+
+  {% if suffix %}
+      {%  if isDynDateTime or isDynDateOnly %}
+          <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+      {% else %}
+        {{ suffix }}
+      {% endif %}
+  {% endif %}
+
+  {% if input_group %}
+    </div>
+  {% endif %}
+
+  {{ children }}
+{% endspaceless %}

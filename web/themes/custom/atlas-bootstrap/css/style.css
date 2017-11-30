@@ -1,0 +1,146 @@
+/**
+ * Place your custom styles here.
+ */
+
+.group-status-entry {
+  margin-bottom: 15px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.margin-bottom-25 {
+    margin-bottom: 25px;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.margin-bottom-32 {
+    margin-bottom: 32px;
+}
+
+.margin-bottom-40 {
+    margin-bottom: 40px;
+}
+
+.padding-top-30 {
+    padding-top: 30px;
+}
+
+a[aria-expanded=false] .fa-chevron-up {
+   display: none;
+}
+a[aria-expanded=true] .fa-chevron-down {
+   display: none;
+}
+
+.logo img {
+  max-height: 45px;
+  max-width: 172px;
+  height: 45px;
+  width: 172px;
+}
+
+#sreq-description-body {
+  white-space: pre-line;
+}
+
+.worknote-message {
+  white-space: pre-line;
+}
+
+.iframe-container{
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+}
+.iframe-container > *{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.sh-skills{
+  display: inline-block;
+  vertical-align: top;
+  min-width: 100px;
+  max-width: 100px;
+  min-height: 100px;
+  margin: 5px 10px;
+}
+
+.navbar-mobile-title{
+  position: fixed;
+  text-align: center;
+  color: white;
+  margin: 12px auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+  border: 1px solid transparent;
+  border-radius: 0;
+}
+
+.navbar-back-arrow{
+  position: relative;
+  float: left;
+  margin-right: 15px;
+  padding: 0 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: white;
+  z-index: 1011;
+}
+
+.navbar-back-arrow i{
+  color: white;
+}
+
+@media (max-width: 767px) {
+    body {
+        margin-top: 50px;
+    }
+    .navbar-default {
+        position: fixed;
+        z-index: 1030; //this value is from variables.less -> @zindex-navbar-fixed
+        right: 0;
+        left: 0;
+        border-radius: 0;
+        top: 0;
+        border-width: 0 0 1px;
+        width: 100%;
+    }
+
+    .sh-skills{
+      display: inline-block;
+      vertical-align: top;
+      min-width: 50px;
+      max-width: 50px;
+      min-height: 50px;
+      margin: 5px 10px;
+    }
+
+  .mobile-menu-title {
+    padding: 0;
+    margin: 0;
+  }
+}

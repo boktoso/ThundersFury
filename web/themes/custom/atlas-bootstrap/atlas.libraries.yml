@@ -1,0 +1,58 @@
+global-styling:
+  version: 1.0.3c
+  css:
+    theme:
+      libraries/games/style/1.0.3/css/cosmo-v2.css: {}
+      libraries/games/style/1.0.3/css/search.css: {}
+  dependencies:
+  - atlas/font-awesome
+
+games-globals:
+  version: 2.0.0
+  js:
+    libraries/games/globals/2.0.0/js/global-functions.js: {}
+  css:
+    theme:
+      libraries/games/globals/2.0.0/css/global-style.css: {weight: 40}
+  dependencies:
+  - core/jquery
+
+#The following are external dependencies
+
+# font-awesome: http://fontawesome.io
+font-awesome:
+  version: 4.7-2.0
+  css:
+    theme:
+      libraries/font-awesome/4.7-2.0/css/font-awesome.min.css: {}
+
+# bootstrap-select: https://silviomoreto.github.io/bootstrap-select
+bootstrap-select:
+  version: 1.12.2
+  css:
+    theme:
+      libraries/bootstrap-select/1.12.2/css/bootstrap-select.min.css: {}
+      libraries/bootstrap-select/1.12.2/extensions/bootstrap-select.css: {}
+  js:
+    libraries/bootstrap-select/1.12.2/js/bootstrap-select.min.js: {}
+  dependencies:
+  - core/jquery
+
+# bootstrap-datetimepicker: https://eonasdan.github.io/bootstrap-datetimepicker/
+bootstrap-datetimepicker:
+  version: 4.17.43
+  css:
+    theme:
+      libraries/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css: {}
+  js:
+    libraries/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js: {}
+  dependencies:
+  - core/jquery
+  - atlas/moment
+
+# moment.js: https://momentjs.com
+moment:
+  version: 2.19.2
+  js:
+    libraries/moment/2.19.2/js/moment.js: {}
+    libraries/moment/2.19.2/js/moment-timezone-with-data.js: {}

@@ -1,0 +1,327 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sitehands: Experts in the Field</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <link href="/frontly/css/animate.css" rel="stylesheet">
+    <link href="/frontly/css/rider.css" rel="stylesheet">
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-84940835-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script src="//cdn.zarget.com/96829/149762.js"></script>
+    <script src="https://use.fontawesome.com/9d2df3abae.js"></script>
+    <!--[if lt IE 9]>
+    <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+    <script src="../bower_components/respond/dest/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            {{ page.navigation }}
+            {# .btn-navbar is used as the toggle for collapsed navbar content #}
+            {% if page.navigation_collapsible %}
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            {% endif %}
+        </div>
+
+        {# Navigation (collapsible) #}
+        {% if page.navigation_collapsible %}
+            <div id="navbar-collapse" class="navbar-collapse collapse">
+                {{ page.navigation_collapsible }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
+<section id="tapglass-jumbotron">
+    <div class="container">
+        <div class="row">
+            <div id="tapglass-body" class="col-xs-12 col-md-4">
+                <h1 style="margin-top: 12vh;">In case of emergency,<br><b>tap glass.</b></h1>
+                <h3>When something breaks, there is no room for wasted time. Sitehands technicians are available around
+                    the clock at the push of a button.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div id="tapglass-body" class="col-xs-12 col-md-4 text-center" style="margin-top:15px;">
+                <a href="#contactus" class="btn btn-site btn-lg">Sign Up for the Beta</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="whatwedo">
+    <div class="container">
+        <h1>Defragment your Vendor Relationships</h1>
+        <hr class="light-sep">
+        <div class="row vertical-align">
+            <div class="col-xs-12 col-sm-7">
+                <img class="img-responsive wow fadeIn" data-wow-duration="2s" data-wow-offset="100"
+                     src="/frontly/img/Trans_SH.png">
+            </div>
+            <div class="col-sm-5">
+                <h2>The Transaction</h2>
+                <h3>The smooth operation of your business depends on thousands - or hundreds of thousands - of
+                    successful transactions. Each of these transactions represents a problem to solve, a new technical
+                    component to install, or a critical upgrade to deploy. And every job brings together a customer and
+                    a technician who work closely with one another to get work done effectively, quickly, and
+                    economically.</h3>
+            </div>
+        </div>
+        <div class="row vertical-align" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="col-xs-12 col-sm-5 col-sm-push-7">
+                <img class="img-responsive wow bounceIn" data-wow-offset="170" data-wow-duration="3s"
+                     src="/frontly/img/Bad_SH.png">
+            </div>
+            <div class="col-xs-12 col-sm-7 col-sm-pull-5">
+                <h2>A Fragmented Field</h2>
+                <h3>Executing service transactions across many cities, states, or countries is a complicated
+                    proposition. Add in the diverse range of service types that the modern business needs, and you are
+                    left with a many-to-many problem that afflicts companies large and small.</h3>
+                <h3>The traditional response to this complexity is to create dedicated teams to manage vendor fleets
+                    that focus on one geographic area or one type of transaction. But in today’s connected world, that
+                    approach has become untenable. The result is a collection of contracts, relationships, and
+                    specialized service requirements that are impossible to manage, audit, or control.</h3>
+            </div>
+        </div>
+        <hr class="light-sep">
+        <h2>A Streamlined Ecosystem</h2>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <img class="img-responsive wow fadeIn" data-wow-offset="100" data-wow-duration="4s"
+                     src="/frontly/img/Good_SH.png" style="min-width: 100%;">
+                <h2>Sitehands customers have access to standardized transactions and a variety of providers, <b>all in
+                        one place.</b></h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="trust">
+    <div class="container">
+        <i class="fa fa-lock fa-5x text-warning" aria-hidden="true"></i>
+        <h1>Trust</h1>
+        <hr class="light-sep">
+        <div class="row">
+            <div class="col-xs-12 col-sm-7 col-md-7 text-left">
+                <h3 style="margin-top: 10.5px;">At Sitehands, we know that we are sending technicians into your most
+                    critical sites, to solve your most high-priority problems. This is not a responsibility we take
+                    lightly.</h3>
+
+                <h3>When we onboard a new technician, not only do we verify their skills and certifications, we also
+                    conduct an extensive and comprehensive background check, along with drug testing and proof of work
+                    eligibility.</h3>
+
+                <h3>These proactive measures ensure that every Certified Sitehands Technician is someone you can
+                    trust.</h3>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-5 col-md-5 text-left">
+                <h4>The CST Badge certification process includes:</h4>
+                <ul>
+                    <li>SSN Trace</li>
+                    <li>Criminal Check</li>
+                    <li>Driving Records</li>
+                    <li>Employment and Education Verification</li>
+                    <li>Credential Verification</li>
+                    <li>Drug Testing</li>
+                    <li>Work Eligibility Validation</li>
+                </ul>
+                <h4>We can also provide, at customer request, additional screening services including:</h4>
+                <ul>
+                    <li>FBI Fingerprint Background</li>
+                    <li>Personality and Cognitive Review</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="testimonials">
+    <div class="container">
+        <h1>Testimonials</h1>
+        <hr class="light-sep">
+        <h3>What Clients Say About Us</h3>
+        <!-- Carousel
+           ================================================== -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators" style="position: absolute; bottom: -50px;">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="quote">
+                        <h5><i class="fa fa-quote-left left"></i>This is beautiful! Is this what I can look forward to
+                            from all of your technicians on future cuts? Very Impressive! Thank you.<i
+                                    class="fa fa-quote-right right"></i></h5>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="quote">
+
+                        <h5><i class="fa fa-quote-left left"></i>Everyone did a superb job! Your team was heavily
+                            involved managing the efforts and … issues were pointed out to me that I would have had no
+                            other way of knowing!<i class="fa fa-quote-right right"></i></h5>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="quote">
+                        <h5><i class="fa fa-quote-left left"></i>I would like to thank the technicians for their
+                            dedication, team spirit and hard work! We look forward to working with everyone on the next
+                            project.<i class="fa fa-quote-right right"></i></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.carousel -->
+
+
+    </div>
+</section>
+
+<section id="contactus" class="text-center" style="background-color: #fff; color: #000;">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <hr class="light-sep">
+        <h4 style="color: #000;">We are moving towards completion of our closed alpha and are seeking participants in
+            our beta, which begins in 1Q 2017.<br><br>Please fill out the form below if you are interested in making
+            Sitehands your frictionless solution for portfolio execution.</h4>
+
+        <form class="form-horizontal text-left">
+            <fieldset>
+                <div class="form-group">
+                    <label for="inputName" class="col-lg-2 control-label">Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputTitle" class="col-lg-2 control-label">Title</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCompany" class="col-lg-2 control-label">Company Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputCompany" placeholder="Company Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone" class="col-lg-2 control-label">Phone</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputPhone" placeholder="(212) 555-1212">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Comment</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="5" id="textArea"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-site">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+</section>
+
+<section id="inclosing">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p><b>Experts in the Field</b><br/>
+                    Sitehands is a network of technicians who will get work done for you.</p>
+                <hr class="light-sep">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Sitehands is a strategic business unit of CS Technology.</p>
+                <h3>CS Technology</h3>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <p>
+                    One Penn Plaza<br>
+                    54th Floor<br>
+                    New York, NY 10119<br><br>
+                    Phone: 646.473.2400
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                About<br>
+                Support<br>
+                Careers<br>
+                Terms of Use<br>
+                Privacy Policy<br>
+            </div>
+            <div class="col-xs-12 text-center">
+                <h6>
+                    <small>Copyright 2016 CS Technology</small>
+                </h6>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<!-- JS PLUGINS -->
+<script src="/frontly/js/jquery.easing.min.js"></script>
+<script src="/frontly/plugins/waypoints/jquery.waypoints.min.js"></script>
+<script src="/frontly/plugins/countTo/jquery.countTo.js"></script>
+<script src="/frontly/plugins/inview/jquery.inview.min.js"></script>
+<script src="/frontly/plugins/WOW/dist/wow.min.js"></script>
+<script src="/frontly/js/custom.js"></script>
+
+
+</body>
+
+</html>

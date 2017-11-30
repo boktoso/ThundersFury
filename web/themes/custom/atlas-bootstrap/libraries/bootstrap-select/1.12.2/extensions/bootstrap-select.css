@@ -1,0 +1,60 @@
+.btn-selectpicker {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #999999;
+}
+.btn-selectpicker:focus,
+.btn-selectpicker.focus {
+    color: #333333;
+    background-color: #e6e6e6;
+    border-color: #595959;
+}
+.btn-selectpicker:hover {
+    color: #333333;
+    background-color: #e6e6e6;
+    border-color: #7a7a7a;
+}
+.btn-selectpicker:active,
+.btn-selectpicker.active,
+.open > .dropdown-toggle.btn-selectpicker {
+    color: #333333;
+    background-color: #e6e6e6;
+    border-color: #7a7a7a;
+}
+.btn-selectpicker:active:hover,
+.btn-selectpicker.active:hover,
+.open > .dropdown-toggle.btn-selectpicker:hover,
+.btn-selectpicker:active:focus,
+.btn-selectpicker.active:focus,
+.open > .dropdown-toggle.btn-selectpicker:focus,
+.btn-selectpicker:active.focus,
+.btn-selectpicker.active.focus,
+.open > .dropdown-toggle.btn-selectpicker.focus {
+    color: #333333;
+    background-color: #d4d4d4;
+    border-color: #595959;
+}
+.btn-selectpicker:active,
+.btn-selectpicker.active,
+.open > .dropdown-toggle.btn-selectpicker {
+    background-image: none;
+}
+.btn-selectpicker.disabled:hover,
+.btn-selectpicker[disabled]:hover,
+fieldset[disabled] .btn-selectpicker:hover,
+.btn-selectpicker.disabled:focus,
+.btn-selectpicker[disabled]:focus,
+fieldset[disabled] .btn-selectpicker:focus,
+.btn-selectpicker.disabled.focus,
+.btn-selectpicker[disabled].focus,
+fieldset[disabled] .btn-selectpicker.focus {
+    background-color: #ffffff;
+    border-color: #999999;
+}
+.btn-selectpicker .badge {
+    color: #ffffff;
+    background-color: #333333;
+}
+.btn-selectpicker:hover {
+    background-color: #fff;
+}

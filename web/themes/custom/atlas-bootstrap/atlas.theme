@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+
+  function atlas_preprocess_input(&$variables)
+  {
+//The first IF statement checks to see if the $variables['icon'] is true, if not, it exits the statement
+
+
+
+      /*
+       * This is the icon array
+       * for buttons. This covers colorization and iconization.
+       *
+       * The values are ('Label', 'fontawesome icon name')
+       */
+
+      $buttons = array(
+          array('Cancel', 'remove'),
+          array('Remove', 'remove'),
+          array('Delete', 'remove'),
+          array('Approve', 'check'),
+          array('Reject', 'question'),
+          array('Select', 'check'),
+      );
+
+      foreach ($buttons as $button) {
+          if ($variables['element']['#value'] == $button[0]) {
+              $variables['element']['#attributes']['icon_position'] = 'before';
+              $variables['icon'] = array(
+                  '#type' => 'html_tag',
+                  '#tag' => 'i',
+                  '#value' => null,
+                  '#attributes' => array(
+                      'class' => array('fa', 'fa-' . $button[1]),
+                      'aria-hidden' => true,
+                  ),
+              );
+          }
+
+      }
+  }
