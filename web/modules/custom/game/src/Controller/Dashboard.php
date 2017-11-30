@@ -17,6 +17,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class Dashboard extends ControllerBase
 {
 	public function content(){
-	
+		$build = array(
+			'#cache' => ['max-age' => 0],
+			'#theme' => 'dashboard_page',
+			'#tabs' => array()
+		);
+		
+		$build['#attached']['library'][] = 'atlas/game-dashboard';
+		
+		return $build;
 	}
 }

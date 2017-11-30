@@ -1,19 +1,29 @@
 global-styling:
-  version: 1.0.3c
+  version: 1.0.0
   css:
     theme:
-      libraries/games/style/1.0.3/css/cosmo-v2.css: {}
-      libraries/games/style/1.0.3/css/search.css: {}
+      libraries/games/style/1.0.0/css/cosmo-v2.css: {}
+      libraries/games/style/1.0.0/css/search.css: {}
   dependencies:
   - atlas/font-awesome
 
 games-globals:
-  version: 2.0.0
+  version: 1.0.0
   js:
-    libraries/games/globals/2.0.0/js/global-functions.js: {}
+    libraries/games/globals/1.0.0/js/global-functions.js: {}
   css:
     theme:
-      libraries/games/globals/2.0.0/css/global-style.css: {weight: 40}
+      libraries/games/globals/1.0.0/css/global-style.css: {weight: 40}
+  dependencies:
+  - core/jquery
+
+game-dashboard:
+  version: 1.0.0
+  js:
+    libraries/games/dashboard/1.0.0/js/dashboard.js: {}
+  css:
+    theme:
+          libraries/games/dashboard/1.0.0/css/dashboard.css: {}
   dependencies:
   - core/jquery
 
