@@ -5,3 +5,12 @@ game_dashboard:
     _title: 'Dashboard'
   requirements:
     [NONE]
+
+game_login:
+  path: '/login'
+  defaults:
+    _controller: '\Drupal\game\Controller\Login::content'
+    _title_callback: '\Drupal\game\Controller\Login::getTitle'
+  requirements:
+    _role:
+      'anonymous'

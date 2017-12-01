@@ -4,18 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd7d86244cd2a1f236779a21f93f0e58f
+class ComposerStaticInit0c143079d578c0be20802107bf77cf56
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '5a12a5271c58108e0aa33355e6ac54ea' => __DIR__ . '/..' . '/drupal/console-core/src/functions.php',
-        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
     );
 
@@ -51,7 +50,6 @@ class ComposerStaticInitd7d86244cd2a1f236779a21f93f0e58f
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Iconv\\' => 23,
-            'Symfony\\Polyfill\\Apcu\\' => 22,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\VarDumper\\' => 28,
             'Symfony\\Component\\Validator\\' => 28,
@@ -194,10 +192,6 @@ class ComposerStaticInitd7d86244cd2a1f236779a21f93f0e58f
         'Symfony\\Polyfill\\Iconv\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-iconv',
-        ),
-        'Symfony\\Polyfill\\Apcu\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-apcu',
         ),
         'Symfony\\Component\\Yaml\\' => 
         array (
@@ -997,10 +991,10 @@ class ComposerStaticInitd7d86244cd2a1f236779a21f93f0e58f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd7d86244cd2a1f236779a21f93f0e58f::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd7d86244cd2a1f236779a21f93f0e58f::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd7d86244cd2a1f236779a21f93f0e58f::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitd7d86244cd2a1f236779a21f93f0e58f::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0c143079d578c0be20802107bf77cf56::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0c143079d578c0be20802107bf77cf56::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0c143079d578c0be20802107bf77cf56::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit0c143079d578c0be20802107bf77cf56::$classMap;
 
         }, null, ClassLoader::class);
     }
