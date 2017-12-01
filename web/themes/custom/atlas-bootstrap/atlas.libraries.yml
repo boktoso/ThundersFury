@@ -6,6 +6,7 @@ global-styling:
       libraries/games/style/1.0.0/css/search.css: {}
   dependencies:
   - atlas/font-awesome
+  - atlas/games-globals
 
 games-globals:
   version: 1.0.0
