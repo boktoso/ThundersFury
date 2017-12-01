@@ -10,6 +10,11 @@ function game_theme($existing, $type, $theme, $path)
 			
 			)
 		),
+		'login_page' => array(
+			'variables' => array(
+			
+			)
+		),
 		'game' => array(
 			'variables' => array(
 			

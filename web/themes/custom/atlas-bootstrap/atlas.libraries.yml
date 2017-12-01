@@ -27,6 +27,16 @@ game-dashboard:
   dependencies:
   - core/jquery
 
+game-login:
+  version: 1.0.0
+  js:
+    libraries/games/login/1.0.0/js/login.js: {}
+  css:
+    theme:
+      libraries/games/login/1.0.0/css/login.css: {}
+  dependencies:
+  - core/jquery
+
 #The following are external dependencies
 
 # font-awesome: http://fontawesome.io

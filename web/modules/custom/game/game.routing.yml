@@ -4,13 +4,25 @@ game_dashboard:
     _controller: '\Drupal\game\Controller\Dashboard::content'
     _title: 'Dashboard'
   requirements:
-    [NONE]
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
 
 game_login:
   path: '/login'
   defaults:
     _controller: '\Drupal\game\Controller\Login::content'
     _title_callback: '\Drupal\game\Controller\Login::getTitle'
+    methods: [GET]
   requirements:
-    _role:
-      'anonymous'
+    _role: 'anonymous'
+
+game_login_action:
+  path: '/login'
+  defaults:
+    _controller: '\Drupal\game\Controller\Login::loginAction'
+    methods: [POST]
+  options:
+    no_cache: TRUE
+  requirements:
+    _role: 'anonymous'
