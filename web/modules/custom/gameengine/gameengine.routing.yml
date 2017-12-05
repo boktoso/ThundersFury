@@ -1,0 +1,17 @@
+gameengine_dashboard:
+  path: '/dashboard'
+  defaults:
+    _controller: '\Drupal\gameengine\Controller\Dashboard::content'
+    _title: 'Dashboard'
+  options:
+      no_cache: TRUE
+  requirements:
+      _role: 'authenticated'
+
+gameengine_login:
+  path: '/login'
+  defaults:
+    _controller: '\Drupal\gameengine\Controller\Login::content'
+    _title: 'Login'
+  requirements:
+    _permission: 'access content'

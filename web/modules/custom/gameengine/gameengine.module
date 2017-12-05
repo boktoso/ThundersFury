@@ -9,27 +9,17 @@ use Drupal\Core\Datetime\Element\Datetime;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Url;
 
-function game_theme($existing, $type, $theme, $path)
+function gameengine_theme($existing, $type, $theme, $path)
 {
 	return array(
 		'dashboard_page' => array(
 			'variables' => array(
-			
+				'test' => null
 			)
 		),
 		'login_page' => array(
 			'variables' => array(
-			
-			)
-		),
-		'game' => array(
-			'variables' => array(
-			
-			)
-		),
-		'profile' => array(
-			'variables' => array(
-			
+				'test' => null
 			)
 		)
 	);

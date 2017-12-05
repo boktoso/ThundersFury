@@ -2,29 +2,39 @@
 /**
  * Created by PhpStorm.
  * User: rhayman
- * Date: 11/30/17
- * Time: 1:13 PM
+ * Date: 12/1/17
+ * Time: 9:24 AM
  */
 
-
-namespace Drupal\game\Controller;
+namespace Drupal\gameengine\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Render\HtmlResponse;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class Dashboard
+class Login extends ControllerBase
 {
-	public function content(){
+	function content()
+	{
 		$build = array(
 			'#cache' => ['max-age' => 0],
-			'#theme' => 'dashboard_page',
+			'#theme' => 'login_page',
 			'#tabs' => array()
 		);
 		
-		$build['#attached']['library'][] = 'atlas/game-dashboard';
+		$build['#attached']['library'][] = 'atlas/gameengine-login';
 		
 		return $build;
+	}
+	
+	function loginAction()
+	{
+		return true;
+	}
+	
+	function getTitle()
+	{
+		return "Thunder's Fury";
 	}
 }

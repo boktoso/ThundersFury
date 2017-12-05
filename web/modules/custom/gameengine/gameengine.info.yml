@@ -1,7 +1,8 @@
-name: Game
+name: Game Engine
 type: module
 description: 'The Game Engines basic functions and entities.'
 package: Game Engine
+version: 1.0
 core: 8.x
 hidden: false
 

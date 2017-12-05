@@ -1,6 +1,6 @@
-customerportal.dashboard:
+gameengine.dashboard:
   title: 'Dashboard'
   description: 'Home Page'
-  route_name: game_dashboard
+  route_name: gameengine_dashboard
   weight: 100
   menu_name: main

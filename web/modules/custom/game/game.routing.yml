@@ -1,7 +1,0 @@
-game_dashboard:
-  path: '/dashboard'
-  defaults:
-    _controller: '\Drupal\game\Controller\Dashboard::content'
-    _title: 'Dashboard'
-  requirements:
-    _roles: 'authenticated'
