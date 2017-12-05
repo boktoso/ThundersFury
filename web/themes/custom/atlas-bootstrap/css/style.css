@@ -1,7 +1,6 @@
 /**
  * Place your custom styles here.
  */
-
 .group-status-entry {
   margin-bottom: 15px;
 }
@@ -74,15 +73,6 @@ a[aria-expanded=true] .fa-chevron-down {
     width: 100%;
 }
 
-.sh-skills{
-  display: inline-block;
-  vertical-align: top;
-  min-width: 100px;
-  max-width: 100px;
-  min-height: 100px;
-  margin: 5px 10px;
-}
-
 .navbar-mobile-title{
   position: fixed;
   text-align: center;
@@ -128,15 +118,6 @@ a[aria-expanded=true] .fa-chevron-down {
         top: 0;
         border-width: 0 0 1px;
         width: 100%;
-    }
-
-    .sh-skills{
-      display: inline-block;
-      vertical-align: top;
-      min-width: 50px;
-      max-width: 50px;
-      min-height: 50px;
-      margin: 5px 10px;
     }
 
   .mobile-menu-title {
