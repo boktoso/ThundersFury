@@ -4,7 +4,7 @@ game_dashboard:
     _controller: '\Drupal\game\Controller\Dashboard::content'
     _title: 'Dashboard'
   requirements:
-    _roles: 'authenticated+administrator+player+moderator'
+    _roles: 'authenticated'
 
 game_login:
   path: '/login'
