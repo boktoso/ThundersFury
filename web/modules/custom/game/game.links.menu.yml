@@ -1,1 +1,6 @@
-
+customerportal.dashboard:
+  title: 'Dashboard'
+  description: 'Home Page'
+  route_name: game_dashboard
+  weight: 100
+  menu_name: main

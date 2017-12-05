@@ -14,7 +14,7 @@ use Drupal\Core\Render\HtmlResponse;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-class Dashboard extends ControllerBase
+class Dashboard
 {
 	public function content(){
 		$build = array(
