@@ -27,11 +27,15 @@
 			// don't process empty string
 			if (usermessage != ''){
 				$(this).val('');
-				var split = usermessage.split(" ");
-				var action = split[0];
-				var target = 'none';
-				if(split.length > 1){
-					target = split[1];
+				if (usermessage.toLowerCase() == "it's raining men"){
+					action = "itsrainingmen";
+				} else {
+					var split = usermessage.split(" ");
+					var action = split[0];
+					var target = 'none';
+					if(split.length > 1){
+						target = split[1];
+					}
 				}
 				addToWorldText(usermessage);
 				processMessage(action, target);

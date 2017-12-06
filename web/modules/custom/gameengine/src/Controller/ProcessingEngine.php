@@ -69,6 +69,9 @@ class ProcessingEngine extends ControllerBase
 					$string .= "Attack: <br />";
 					$string .= "Defense: <br />";
 					break;
+				case 'itsrainingmen':
+					$response['message'] = 'Hallelujah!';
+					break;
 				default:
 					$response['message'] = $action . ' is not a valid action.';
 					break;
