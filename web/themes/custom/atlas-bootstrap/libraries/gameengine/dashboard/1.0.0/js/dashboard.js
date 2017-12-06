@@ -69,5 +69,7 @@
 		msg += message;
 		msg += '</div>';
 		$('#worldText').append(msg);
+		var element = document.getElementById('world-text-wrapper');
+		element.scrollTop = element.scrollHeight - element.clientHeight;
 	}
 })(jQuery);

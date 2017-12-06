@@ -14,6 +14,7 @@ use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\gameengine\Entity\Player;
+use Drupal\gameengine\Plugin\Content\Item;
 
 class ProcessingEngine extends ControllerBase
 {
@@ -38,19 +39,22 @@ class ProcessingEngine extends ControllerBase
 			$user = User::load(\Drupal::currentUser()->id());
 			
 			$player = new Player($user);
-			
+			$response['message'] = 'Server Error.';
 			switch(strtolower($action)){
 				case 'help':
 					$string = "Available Commands: <br />" .
 								"help <br />" .
 								"hello <br />" .
 								"look <br />" .
+								"check {inventory} <br />" .
+								"status <br />" .
 								"move/go {" . implode(", ", $this->directions) . "} <br />";
 					
 					$response['message'] = $string;
 					break;
 				case 'hello':
-					$response['message'] = 'Hello, ' . $user->field_charactername->value . '!';
+				case 'hi':
+					$response['message'] = 'Hello, ' . $player->getName() . '!';
 					break;
 				case 'look':
 					$response['message'] = 'You look around into the void, and see nothing.';
@@ -65,12 +69,26 @@ class ProcessingEngine extends ControllerBase
 					break;
 				case 'status':
 					$string = "Status:<br />";
-					$string .= "Health: <br />";
-					$string .= "Attack: <br />";
-					$string .= "Defense: <br />";
+					$string .= "Health: " . $player->getHealth() . "<br />";
+					$string .= "Attack: " . $player->getAttack() . "<br />";
+					$string .= "Defense: " . $player->getDefense() . "<br />";
+					$response['message'] = $string;
 					break;
 				case 'itsrainingmen':
 					$response['message'] = 'Hallelujah!';
+					break;
+				case 'check':
+					if(strtolower($target) == "inventory"){
+						$string = 'Inventory:<br />';
+						$inventory = $player->getInventory();
+						foreach($inventory as $iteminfo){
+							$item = new Item($iteminfo['id']);
+							$string .= '&nbsp;&nbsp;' . $iteminfo['quantity'] .  ' X ' . $item->getName() . '<br />';
+						}
+						$response['message'] = $string;
+					} else {
+						$response['message'] = 'Invalid target for check.';
+					}
 					break;
 				default:
 					$response['message'] = $action . ' is not a valid action.';
