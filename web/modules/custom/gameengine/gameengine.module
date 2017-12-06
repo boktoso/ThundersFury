@@ -25,6 +25,13 @@ function gameengine_theme($existing, $type, $theme, $path)
 	);
 }
 
+function gameengine_user_login($account) {
+	// Redirect to the /dashboard
+	$response = new RedirectResponse("/dashboard");
+	$response->send();
+	return;
+}
+
 function getClientIp() {
 	$ipAddress = '';
 	if (getenv('HTTP_CLIENT_IP'))

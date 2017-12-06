@@ -6,12 +6,14 @@ gameengine_dashboard:
   options:
       no_cache: TRUE
   requirements:
-      _role: 'authenticated'
+      _role: 'anonymous+authenticated'
 
-gameengine_login:
-  path: '/login'
+gameengine_process:
+  path: '/process'
   defaults:
-    _controller: '\Drupal\gameengine\Controller\Login::content'
-    _title: 'Login'
+    _controller: '\Drupal\gameengine\Controller\ProcessingEngine::processText'
+  methods:  [POST]
+  options:
+    no_cache: TRUE
   requirements:
     _permission: 'access content'
