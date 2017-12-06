@@ -15,6 +15,12 @@
 		$(".world-text-wrapper").height($(".main-wrapper").height() - $(".user-text-wrapper").height());
 	});
 	
+	// if the user clicks on the world text wrapper
+	// have their focus go to the user input field
+	$(".world-text-wrapper").on('click', function(){
+		$("#userInput").focus();
+	});
+	
 	$("#userInput").on('keyup', function(e){
 		if(e.keyCode == 13){
 			var usermessage = $(this).val();
