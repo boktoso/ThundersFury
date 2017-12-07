@@ -68,6 +68,7 @@ class ProcessingEngine extends ControllerBase
 					}
 					break;
 				case 'status':
+				case 'stats':
 					$string = "Status:<br />";
 					$string .= "Health: " . $player->getHealth() . "<br />";
 					$string .= "Attack: " . $player->getAttack() . "<br />";
@@ -85,6 +86,12 @@ class ProcessingEngine extends ControllerBase
 							$item = new Item($iteminfo['id']);
 							$string .= '&nbsp;&nbsp;' . $iteminfo['quantity'] .  ' X ' . $item->getName() . '<br />';
 						}
+						$response['message'] = $string;
+					} elseif(strtolower($target) == "me" || strtolower($target) == "myself" || strtolower($target) == "self") {
+						$string = "Stats:<br />";
+						$string .= "Health: " . $player->getHealth() . "<br />";
+						$string .= "Attack: " . $player->getAttack() . "<br />";
+						$string .= "Defense: " . $player->getDefense() . "<br />";
 						$response['message'] = $string;
 					} else {
 						$response['message'] = 'Invalid target for check.';
