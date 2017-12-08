@@ -21,6 +21,11 @@ function gameengine_theme($existing, $type, $theme, $path)
 			'variables' => array(
 				'test' => null
 			)
+		),
+		'create_user_page' => array(
+			'variables' => array(
+				'classList' => null,
+			)
 		)
 	);
 }
@@ -57,6 +62,19 @@ function gameengine_user_insert(&$edit, $account, $category) {
 	);
 
 	$query->execute();
+}
+
+/**
+ * Return a list of Classes from the DB
+ *
+ * @return array
+ */
+function getListOfClasses(){
+	$query = \Drupal::database()->query('SELECT uid, class as name FROM thunderfury__classes ORDER BY class ASC');
+	
+	$result = $query->fetchAll();
+	
+	return $result;
 }
 
 function getClientIp() {

@@ -1,0 +1,72 @@
+<div id="wrapper2" class="container">
+	<div class="main-wrapper">
+		<div class="main-inner-wrapper">
+			<div class="row">
+				<div class="col-xs-12">
+					<form class="form">
+						<div class="row">
+							<div class="col-xs-12">
+								<h2>Create a New User!</h2>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="email" class="control-label form-required">Email</label> <i id="email-icon" class=""></i>
+								<input autocorrect="none" autocapitalize="none" spellcheck="false" autofocus="autofocus" class="form-text form-email required form-control" id="email" name="email" value="" size="60" maxlength="60" required="required" aria-required="true" title="" data-toggle="tooltip" data-original-title="Enter your Thunders Fury email." type="email" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="username" class="control-label form-required">Username</label> <i id="username-icon" class=""></i>
+								<input autocorrect="none" autocapitalize="none" spellcheck="false" autofocus="autofocus" class="form-text required form-control" id="username" name="username" value="" size="60" maxlength="60" required="required" aria-required="true" title="" data-toggle="tooltip" data-original-title="Enter your Thunders Fury username." type="text" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="password1" class="control-label form-required">Password</label> <i id="password1-icon" class=""></i>
+								<input type="password" id="password1" name="password-1" class="form-text required form-control" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="password2" class="control-label form-required">Repeat Password</label> <i id="password2-icon" class=""></i>
+								<input type="password" id="password2" name="password-2" class="form-text required form-control" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="char-name" class="control-label form-required">Character Name</label> <i id="char-name-icon" class=""></i>
+								<input type="text" id="char-name" name="char-name" class="form-text required form-control" data-toggle="tooltip" data-original-title="Enter your Thunders Fury Character Name." />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<label for="class-selector" class="control-label form-required">Choose a Class</label>
+								<div class="select-wrapper">
+									<select id="class-selector" name="class" class="form-select required form-control">
+										{% for class in classList %}
+											<option value="{{ class.uid }}">{{ class.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								&nbsp;
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<button class="button js-form-submit form-submit btn-primary btn icon-before" type="submit" id="submit" name="op" value="Create">
+									<span class="icon glyphicon glyphicon-log-in" aria-hidden="true"></span>
+										Create
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

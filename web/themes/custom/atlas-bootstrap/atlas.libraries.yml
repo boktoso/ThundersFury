@@ -28,13 +28,13 @@ gameengine-dashboard:
   dependencies:
   - core/jquery
 
-gameengine-login:
+gameengine-create-user:
   version: 1.0.0
   js:
-    libraries/gameengine/login/1.0.0/js/login.js: {}
+    libraries/gameengine/create-user/1.0.0/js/create-user.js: {}
   css:
     theme:
-      libraries/gameengine/login/1.0.0/css/login.css: {}
+      libraries/gameengine/create-user/1.0.0/css/create-user.css: {}
   dependencies:
   - core/jquery
 
