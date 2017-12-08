@@ -6,7 +6,7 @@
  * Time: 1:11 PM
  */
 
-namespace Drupal\gameengine\Entity\Classes;
+namespace Drupal\class_engine\Entity\Classes;
 
 
 class BaseClass

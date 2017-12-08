@@ -6,7 +6,7 @@
  * Time: 9:04 AM
  */
 
-namespace Drupal\gameengine\Entity;
+namespace Drupal\class_engine\Entity;
 
 use Drupal\gameengine\Controller\Inventory;
 use Drupal\user\Entity\User;
@@ -16,6 +16,7 @@ class Player
 	private $userID;
 	private $name;
 	private $classType;
+	private $level;
 	private $health;
 	private $attack;
 	private $defense;
@@ -23,6 +24,9 @@ class Player
 	private $strength;
 	private $constitution;
 	private $dexterity;
+	private $charisma;
+	private $intelligence;
+	private $wisdom;
 	
 	/**
 	 * @var array
@@ -33,16 +37,25 @@ class Player
 	{
 		$this->name = $user->field_charactername->value;
 		$this->classType = $user->field_class->value;
+		$this->level = $user->field_character_level->value;
 		$this->userID = $user->id();
 		$this->inventory = Inventory::getInventory($this->userID);
 	}
 	
-	//<editor-fold desc="Getters">
+	//<editor-fold desc="Getters and Setters">
+	
 	/**
 	 * @return mixed
 	 */
 	public function getName() {
 		return $this->name;
+	}
+	
+	/**
+	 * @param mixed $name
+	 */
+	public function setName($name) {
+		$this->name = $name;
 	}
 	
 	/**
@@ -53,68 +66,31 @@ class Player
 	}
 	
 	/**
-	 * @return mixed
-	 */
-	public function getHealth() {
-		return $this->health;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getAttack() {
-		return $this->attack;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getDefense() {
-		return $this->defense;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getStrength() {
-		return $this->strength;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getConstitution() {
-		return $this->constitution;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getDexterity() {
-		return $this->dexterity;
-	}
-	
-	/**
-	 * @return mixed
-	 */
-	public function getInventory() {
-		return $this->inventory;
-	}
-	//</editor-fold>
-	
-	//<editor-fold desc="Setters">
-	/**
-	 * @param mixed $name
-	 */
-	public function setName($name) {
-		$this->name = $name;
-	}
-	
-	/**
 	 * @param mixed $classType
 	 */
 	public function setClassType($classType) {
 		$this->classType = $classType;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getLevel() {
+		return $this->level;
+	}
+	
+	/**
+	 * @param mixed $level
+	 */
+	public function setLevel($level) {
+		$this->level = $level;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getHealth() {
+		return $this->health;
 	}
 	
 	/**
@@ -125,10 +101,24 @@ class Player
 	}
 	
 	/**
+	 * @return mixed
+	 */
+	public function getAttack() {
+		return $this->attack;
+	}
+	
+	/**
 	 * @param mixed $attack
 	 */
 	public function setAttack($attack) {
 		$this->attack = $attack;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getDefense() {
+		return $this->defense;
 	}
 	
 	/**
@@ -139,10 +129,24 @@ class Player
 	}
 	
 	/**
+	 * @return mixed
+	 */
+	public function getStrength() {
+		return $this->strength;
+	}
+	
+	/**
 	 * @param mixed $strength
 	 */
 	public function setStrength($strength) {
 		$this->strength = $strength;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getConstitution() {
+		return $this->constitution;
 	}
 	
 	/**
@@ -153,6 +157,13 @@ class Player
 	}
 	
 	/**
+	 * @return mixed
+	 */
+	public function getDexterity() {
+		return $this->dexterity;
+	}
+	
+	/**
 	 * @param mixed $dexterity
 	 */
 	public function setDexterity($dexterity) {
@@ -160,7 +171,56 @@ class Player
 	}
 	
 	/**
-	 * @param mixed $inventory
+	 * @return mixed
+	 */
+	public function getCharisma() {
+		return $this->charisma;
+	}
+	
+	/**
+	 * @param mixed $charisma
+	 */
+	public function setCharisma($charisma) {
+		$this->charisma = $charisma;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getIntelligence() {
+		return $this->intelligence;
+	}
+	
+	/**
+	 * @param mixed $intelligence
+	 */
+	public function setIntelligence($intelligence) {
+		$this->intelligence = $intelligence;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getWisdom() {
+		return $this->wisdom;
+	}
+	
+	/**
+	 * @param mixed $wisdom
+	 */
+	public function setWisdom($wisdom) {
+		$this->wisdom = $wisdom;
+	}
+	
+	/**
+	 * @return array
+	 */
+	public function getInventory() {
+		return $this->inventory;
+	}
+	
+	/**
+	 * @param array $inventory
 	 */
 	public function setInventory($inventory) {
 		$this->inventory = $inventory;

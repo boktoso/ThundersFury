@@ -56,6 +56,11 @@
 			headers : {'Content-Type': 'application/json'},
 			success : function (data) {
 				addToWorldText(data.message);
+				if(data.logout == true){
+					setTimeout(function(){
+						location.reload(true);
+					}, 1000);
+				}
 			},
 			error   : function (xhr, ajaxOptions, thrownError) {
 				// processing the error and log the error

@@ -1,0 +1,8 @@
+name: Class Engine
+type: module
+description: 'The Class Engine used to calculate stats.'
+package: Game Engine
+version: 1.0
+core: 8.x
+hidden: false
+

@@ -6,17 +6,17 @@
  * Time: 1:09 PM
  */
 
-namespace Drupal\gameengine\Entity\Classes;
+namespace Drupal\class_engine\Entity\Classes;
 
 use Drupal\user\Entity\User;
-use Drupal\gameengine\Entity\Player;
+use Drupal\class_engine\Entity\Player;
 
 class Warrior extends BaseClass
 {
 	public function __construct()
 	{
-		$this->setBaseAttack(10);
-		$this->setBaseDefense(4);
+		$this->setBaseAttack(8);
+		$this->setBaseDefense(6);
 		$this->setBaseHealth(100);
 		
 		$this->setBaseStrength(10);

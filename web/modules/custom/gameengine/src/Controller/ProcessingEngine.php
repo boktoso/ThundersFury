@@ -13,8 +13,9 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Drupal\gameengine\Entity\Player;
+use Drupal\class_engine\Entity\Player;
 use Drupal\gameengine\Plugin\Content\Item;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ProcessingEngine extends ControllerBase
 {
@@ -70,9 +71,20 @@ class ProcessingEngine extends ControllerBase
 				case 'status':
 				case 'stats':
 					$string = "Status:<br />";
+					$string .= "Name: " . $player->getName() . "<br />";
+					$string .= "Class: " . $player->getClassType() . "<br />";
+					$string .= "Level: " . $player->getLevel() . "<br />";
+					$string .= "-----------------------------------<br />";
 					$string .= "Health: " . $player->getHealth() . "<br />";
 					$string .= "Attack: " . $player->getAttack() . "<br />";
 					$string .= "Defense: " . $player->getDefense() . "<br />";
+					$string .= "-----------------------------------<br />";
+					$string .= "Strength: " . $player->getHealth() . "<br />";
+					$string .= "Constitution: " . $player->getAttack() . "<br />";
+					$string .= "Dexterity: " . $player->getDefense() . "<br />";
+					$string .= "Charisma: " . $player->getHealth() . "<br />";
+					$string .= "Intelligence: " . $player->getAttack() . "<br />";
+					$string .= "Wisdom: " . $player->getDefense() . "<br />";
 					$response['message'] = $string;
 					break;
 				case 'itsrainingmen':
@@ -96,6 +108,11 @@ class ProcessingEngine extends ControllerBase
 					} else {
 						$response['message'] = 'Invalid target for check.';
 					}
+					break;
+				case 'logout':
+					user_logout();
+					$response['message'] = 'Good Bye!';
+					$response['logout'] = true;
 					break;
 				default:
 					$response['message'] = $action . ' is not a valid action.';
