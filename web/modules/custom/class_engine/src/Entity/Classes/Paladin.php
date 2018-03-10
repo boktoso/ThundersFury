@@ -8,20 +8,13 @@
 
 namespace Drupal\class_engine\Entity\Classes;
 
+use Drupal\class_engine\Entity\Player;
+use Drupal\user\Entity\User;
 
-class Paladin extends BaseClass
+class Paladin extends Player
 {
-	public function __construct()
+	public function __construct(User $user)
 	{
-		$this->setBaseAttack(6);
-		$this->setBaseDefense(10);
-		$this->setBaseHealth(110);
-		
-		$this->setBaseStrength(5);
-		$this->setBaseConstitution(10);
-		$this->setBaseDexterity(3);
-		$this->setBaseCharisma(3);
-		$this->setBaseIntelligence(5);
-		$this->setBaseWisdom(5);
+		parent::__construct($user);
 	}
 }

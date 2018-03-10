@@ -8,20 +8,13 @@
 
 namespace Drupal\class_engine\Entity\Classes;
 
+use Drupal\class_engine\Entity\Player;
+use Drupal\user\Entity\User;
 
-class Rogue extends BaseClass
+class Rogue extends Player
 {
-	public function __construct()
+	public function __construct(User $user)
 	{
-		$this->setBaseAttack(10);
-		$this->setBaseDefense(4);
-		$this->setBaseHealth(100);
-		
-		$this->setBaseStrength(6);
-		$this->setBaseConstitution(6);
-		$this->setBaseDexterity(10);
-		$this->setBaseCharisma(3);
-		$this->setBaseIntelligence(3);
-		$this->setBaseWisdom(2);
+		parent::__construct($user);
 	}
 }

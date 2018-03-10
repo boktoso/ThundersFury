@@ -17,6 +17,7 @@ class Player
 	private $name;
 	private $classType;
 	private $level;
+	
 	private $health;
 	private $attack;
 	private $defense;
@@ -27,6 +28,9 @@ class Player
 	private $charisma;
 	private $intelligence;
 	private $wisdom;
+
+	private $experience;
+	private $currency;
 
 	/**
 	 * @var array
@@ -41,12 +45,14 @@ class Player
 		$this->userID = $user->id();
 		$this->inventory = Inventory::getInventory($this->userID);
 
-		$this->strength = $user->field_character_strength;
-		$this->constitution = $user->field_character_constitution;
-		$this->dexterity = $user->field_character_dexterity;
-		$this->charisma = $user->field_character_charisma;
-		$this->intelligence = $user->field_character_intelligence;
-		$this->wisdom = $user->field_character_wisdom;
+		$this->strength = $user->field_character_strength->value;
+		$this->constitution = $user->field_character_constitution->value;
+		$this->dexterity = $user->field_character_dexterity->value;
+		$this->charisma = $user->field_character_charisma->value;
+		$this->intelligence = $user->field_character_intelligence->value;
+		$this->wisdom = $user->field_character_wisdom->value;
+		$this->currency = $user->field_currency->value;
+		$this->$experience = $user->field_character_experience->value;
 	}
 
 	//<editor-fold desc="Getters and Setters">
@@ -233,6 +239,26 @@ class Player
 		$this->inventory = $inventory;
 	}
 
+ /**
+ 	* @return array
+ 	*/
+	public function getExperience() {
+		return $this->$experience;
+	}
+
+ /**
+  * Add to the character's experience.
+	*
+	* @param integer $exp
+	*/
+	public function addToExperience($exp) {
+		// Make sure that the experience is a positive value.
+		if($exp > 0) {
+			$this->$experience += $exp;
+		}
+	}
+
+
 	//</editor-fold>
 
 	/**
@@ -247,6 +273,10 @@ class Player
 
 		$this->health -= $actualDamage;
 
+		if ($this->health < 0) {
+			$this->health = 0;
+		}
+
 		return true;
 	}
 
@@ -257,8 +287,13 @@ class Player
 	 * @return mixed
 	 */
 	public function doDamage(){
+		// Get their attack power.
 		$damage = $this->attack;
 
+		// Apply Class Stat bonuses.
+
+
+		// Return full damage.
 		return $damage;
 	}
 
