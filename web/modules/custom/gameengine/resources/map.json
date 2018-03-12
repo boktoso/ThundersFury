@@ -1,0 +1,18 @@
+{
+  "0": {
+	"name": "Beginning Door",
+	"north": 1,
+	"east": 2,
+	"south": null,
+	"west": 3,
+	"description": "You appear in a room, with a large locked door behind you.  You feel like this is where the world begins and ends.  There are three openings ahead of you.  To you LEFT, RIGHT, and UP."
+  },
+  "1": {
+	"name": "Plane of Hellfire",
+	"north": 4,
+	"east": 5,
+	"south": 0,
+	"west": 6,
+	"description": "The room is filled with fire."
+  }
+}

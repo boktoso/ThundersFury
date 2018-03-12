@@ -1,23 +1,37 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rhayman
- * Date: 12/1/17
- * Time: 9:04 AM
- */
 
 namespace Drupal\class_engine\Entity;
 
 use Drupal\gameengine\Controller\Inventory;
 use Drupal\user\Entity\User;
 
+const BASE_HEALTH = 100;
+const HEALTH_CONSTITUTION_MULTIPLIER = 10;
+
+/**
+ * Class Player
+ *
+ * @package Drupal\class_engine\Entity
+ *
+ *          Complete Player breakdown:
+ *          Max Level: 60
+ *          Max Stats Sum (no item modifiers): 200
+ *          Max Stat Individual (no item modifiers): 100
+ *
+ *          Level Scale:
+ *          Formula:
+ *          40 x^2 + 350x + 27 rounded down
+ *          where X = level
+ *          Formula in PHP:
+ *          requiredXP = floor(40 * (level ^ 2) + (350 * level) + 27)
+ */
 class Player
 {
 	private $userID;
 	private $name;
 	private $classType;
 	private $level;
-	
+
 	private $health;
 	private $attack;
 	private $defense;
@@ -52,7 +66,12 @@ class Player
 		$this->intelligence = $user->field_character_intelligence->value;
 		$this->wisdom = $user->field_character_wisdom->value;
 		$this->currency = $user->field_currency->value;
-		$this->$experience = $user->field_character_experience->value;
+		$this->experience = $user->field_character_experience->value;
+
+		$this->health = BASE_HEALTH
+			+ ($this->constitution * HEALTH_CONSTITUTION_MULTIPLIER);
+		$this->attack = 0;
+		$this->defense = 0;
 	}
 
 	//<editor-fold desc="Getters and Setters">
@@ -243,7 +262,7 @@ class Player
  	* @return array
  	*/
 	public function getExperience() {
-		return $this->$experience;
+		return $this->experience;
 	}
 
  /**
@@ -254,7 +273,7 @@ class Player
 	public function addToExperience($exp) {
 		// Make sure that the experience is a positive value.
 		if($exp > 0) {
-			$this->$experience += $exp;
+			$this->experience += $exp;
 		}
 	}
 
