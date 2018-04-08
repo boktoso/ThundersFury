@@ -4,20 +4,20 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite06abbaf6dd49801e72ac6e6c672a8c0
+class ComposerStaticInit889f2b3f2046717cad108ae7ceb09ea0
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
-        '5a12a5271c58108e0aa33355e6ac54ea' => __DIR__ . '/..' . '/drupal/console-core/src/functions.php',
         '952683d815ff0a7bf322b93c0be7e4e4' => __DIR__ . '/..' . '/chi-teck/drupal-code-generator/src/bootstrap.php',
+        '5a12a5271c58108e0aa33355e6ac54ea' => __DIR__ . '/..' . '/drupal/console-core/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -161,8 +161,8 @@ class ComposerStaticInite06abbaf6dd49801e72ac6e6c672a8c0
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'cweagans\\Composer\\' => 
         array (
@@ -1030,10 +1030,10 @@ class ComposerStaticInite06abbaf6dd49801e72ac6e6c672a8c0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite06abbaf6dd49801e72ac6e6c672a8c0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite06abbaf6dd49801e72ac6e6c672a8c0::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite06abbaf6dd49801e72ac6e6c672a8c0::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite06abbaf6dd49801e72ac6e6c672a8c0::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit889f2b3f2046717cad108ae7ceb09ea0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit889f2b3f2046717cad108ae7ceb09ea0::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit889f2b3f2046717cad108ae7ceb09ea0::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit889f2b3f2046717cad108ae7ceb09ea0::$classMap;
 
         }, null, ClassLoader::class);
     }
