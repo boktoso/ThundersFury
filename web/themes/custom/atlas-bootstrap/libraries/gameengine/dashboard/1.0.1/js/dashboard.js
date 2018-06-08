@@ -1,6 +1,6 @@
 (function ($) {
 	
-	$(document).on('ready' function(){
+	$(document).on('ready', function(){
 		$.ajax({
 			url: '/getInitialLoad',
 			success: function(data) {
