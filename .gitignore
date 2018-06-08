@@ -1,3 +1,4 @@
 /nbproject/private/
-vendor
-web/sites/default/files
+/vendor
+/web/sites/default/files
+/.idea
