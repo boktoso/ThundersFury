@@ -31,7 +31,7 @@ class ProcessingEngine extends ControllerBase
 		'west'
 	);
 
-	public function processText(Request $request) {
+	public function oldProcessText(Request $request) {
 		if ( 0 === strpos( $request->headers->get( 'Content-Type' ), 'application/json' ) ) {
 			$data = json_decode($request->getContent(), TRUE);
 
@@ -144,5 +144,29 @@ class ProcessingEngine extends ControllerBase
 			$response['errorMessage'] = 'Not Valid JSON';
 			return new JsonResponse($response);
 		}
+	}
+	
+	public function processText(Request $request) {
+		if (0 === strpos($request->headers->get('Content-Type'),
+				'application/json')) {
+			$data = json_decode($request->getContent(), TRUE);
+			
+			$message = $data['msgData'];
+			$target = $data['action'];
+			
+			// Write message to the database.
+			
+			
+			// Return the message and its count so we can keep track of last messages.
+		}
+	}
+	
+	public function getLast100Messages() {
+		
+		$messageArray = [];
+		
+		$query = 'SELECT id, author, message, timestamp FROM chatlog WHERE target = "generalmessage" ORDER BY timestamp DESC LIMIT 0, 100';
+		
+		return new JsonResponse();
 	}
 }

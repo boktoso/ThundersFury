@@ -37,3 +37,13 @@ gameengine_checkusername:
     no_cache: TRUE
   requirements:
     _permission: 'access content'
+
+gameengine_get100Messages:
+  path: '/getInitialLoad'
+  defaults:
+    _controller: '\Drupal\gameengine\Controller\ProcessingEngine::getLast100Messages'
+  methods: [GET]
+  options:
+    no_cache: TRUE
+  requirements:
+    _permission: 'access content'
