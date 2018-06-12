@@ -25,3 +25,4 @@ tests/screenshots
 /web/sites/simpletest/
 /web/modules/custom/customerportal/tests/screenshots/
 web/sites/default/settings.local.php
+vendor/*
