@@ -38,20 +38,6 @@ function gameengine_user_login($account) {
 }
 
 /**
- * Implements hook_user_insert().
- */
-function gameengine_user_insert(&$edit, $account, $category) {
-
-	$user = User::load($account->uid);
-	// generate random number
-	$newDisplayName = (string) mt_rand(0,9999999);
-	$newDisplayName = str_pad($newDisplayName, 6, "0", STR_PAD_LEFT);
-	$user->field_display_name->value = $newDispalyName;
-
-	$user->save();
-}
-
-/**
  * Return a list of Classes from the DB
  *
  * @return array
@@ -81,4 +67,24 @@ function getClientIp() {
 	else
 		$ipAddress = 'UNKNOWN';
 	return $ipAddress;
+}
+
+/**
+ * Alter form for custom additions.
+ *
+ * @param array $form
+ *   Form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Form State.
+ * @param string $form_id
+ *   Form ID.
+ */
+function gameengine_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'user_login_form') {
+    $form['actions']['newCustomer'] = [
+      '#prefix' => '<a class="basic-link padding-left-5" href="/user/create">',
+      '#markup' => 'Don\'t have an account?',
+      '#suffix' => '</a>',
+    ];
+  }
 }

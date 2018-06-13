@@ -21,7 +21,7 @@ gameengine_process:
 gameengine_create_user:
   path: '/user/create'
   defaults:
-    _controller: '\Drupal\gameengine\Controller\CreateUser::content'
+    _form: '\Drupal\gameengine\Form\CreateUserForm'
     _title: 'Create New User'
   options:
     no_cache: TRUE
