@@ -1,21 +1,18 @@
 (function ($) {
-	
-	$(document).on('ready', function(){
-		$.ajax({
-			url: '/getInitialLoad',
-			success: function(data) {
-				var messages = data.messages;
-				var textWrapper = $('#worldText');
-				$.each(messages, function(k, msg){
-					// Format the message
-					addToWorldText(msg);
-				});
-			},
-			error: function(xhr) {
-			
-			}
-		});
-	});
+  
+  $.ajax({
+    url: '/getInitialLoad',
+    success: function(messages) {
+      var textWrapper = $('#worldText');
+      $.each(messages, function(k, msg){
+        // Format the message
+        addToWorldText(msg);
+      });
+    },
+    error: function(xhr) {
+    
+    }
+  });
 	
 	$.each($(document).find(".main-wrapper"), function(){
 		// set the height of the sidebar-wrapper and -sidebar-inner-wrapper
@@ -76,8 +73,12 @@
 			},
 			error   : function (xhr, ajaxOptions, thrownError) {
 				// processing the error and log the error
-				
-				addToWorldText('[' + moment().format('YYYY-MM-DD hh:mm:ss A') + '] (SYSTEM) There was an error processing the action.');
+				var errorMsg = {
+					date: new Date(),
+          author: "SYSTEM",
+          message: "There was an error processing the action."
+				}
+				addToWorldText(errorMsg);
 			}
 		});
 	}
@@ -88,7 +89,7 @@
 		msgDateFormatted = msgDate.format('YYYY-MM-DD hh:mm:ss A')
 		msg += '[' + msgDateFormatted + ']';
 		msg += ' (' + msgData.author + ') ';
-		msg += message;
+		msg += msgData.message;
 		msg += '</div>';
 		$('#worldText').append(msg);
 		var element = document.getElementById('world-text-wrapper');

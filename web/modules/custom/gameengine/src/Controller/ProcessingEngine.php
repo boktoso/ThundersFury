@@ -150,14 +150,32 @@ class ProcessingEngine extends ControllerBase
 		if (0 === strpos($request->headers->get('Content-Type'),
 				'application/json')) {
 			$data = json_decode($request->getContent(), TRUE);
+      $conn = \Drupal::database();
+      $user = User::load(\Drupal::currentUser()->id());
 			
 			$message = $data['msgData'];
 			$target = $data['action'];
+			$author = $user->field_display_name->value;
 			
 			// Write message to the database.
-			
-			
-			// Return the message and its count so we can keep track of last messages.
+      $result = $conn->insert('chatlog')
+        ->fields([
+          'author' => $author,
+          'message' => $message['message'],
+          'target' => $target
+        ])
+        ->execute();
+      
+      // Return the message and its count so we can keep track of last messages.
+			$testMsg = [
+				'message' => [
+					"message" => $message['message'],
+					"author" => $author,
+					"date" => date('c')
+				],
+        'index' => $result->id
+			];
+			return new JsonResponse($testMsg);
 		}
 	}
 	
@@ -165,8 +183,13 @@ class ProcessingEngine extends ControllerBase
 		
 		$messageArray = [];
 		
-		$query = 'SELECT id, author, message, timestamp FROM chatlog WHERE target = "generalmessage" ORDER BY timestamp DESC LIMIT 0, 100';
+		$conn = \Drupal::database();
+    $results = $conn->query('SELECT id, author, message, timestamp FROM chatlog WHERE target = \'generalmessage\' ORDER BY timestamp DESC LIMIT 0, 100');
 		
-		return new JsonResponse();
+		foreach($results as $record) {
+			$messageArray[] = $record;
+		}
+		
+		return new JsonResponse($messageArray);
 	}
 }

@@ -43,25 +43,25 @@ function gameengine_user_login($account) {
 function gameengine_user_insert(&$edit, $account, $category) {
 	// create connecting tables
 	
-	// user's equipment table
-	$query = \Drupal::database()->query(
-		'INSERT INTO user__equipment SET (entity_id) VALUE (:uid)',
-		[
-			'uid' => $account->uid
-		]
-	);
-
-	$query->execute();
-
-	// user's inventory table
-	$query = \Drupal::database()->query(
-		'INSERT INTO user__inventory SET (entity_id) VALUE (:uid)',
-		[
-			'uid' => $account->uid
-		]
-	);
-
-	$query->execute();
+//	// user's equipment table
+//	$query = \Drupal::database()->query(
+//		'INSERT INTO user__equipment SET (entity_id) VALUE (:uid)',
+//		[
+//			'uid' => $account->uid
+//		]
+//	);
+//
+//	$query->execute();
+//
+//	// user's inventory table
+//	$query = \Drupal::database()->query(
+//		'INSERT INTO user__inventory SET (entity_id) VALUE (:uid)',
+//		[
+//			'uid' => $account->uid
+//		]
+//	);
+//
+//	$query->execute();
 }
 
 /**
