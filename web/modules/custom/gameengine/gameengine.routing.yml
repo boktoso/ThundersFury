@@ -21,7 +21,7 @@ gameengine_process:
 gameengine_create_user:
   path: '/user/create'
   defaults:
-    _controller: '\Drupal\gameengine\Controller\CreateUser::content'
+    _form: '\Drupal\gameengine\Form\CreateUserForm'
     _title: 'Create New User'
   options:
     no_cache: TRUE
@@ -32,6 +32,26 @@ gameengine_checkusername:
   path: '/checkusername/{username}'
   defaults:
     _controller: '\Drupal\gameengine\Controller\CreateUser::checkIfUsernameAvailable'
+  methods: [GET]
+  options:
+    no_cache: TRUE
+  requirements:
+    _permission: 'access content'
+
+gameengine_get100Messages:
+  path: '/getInitialLoad'
+  defaults:
+    _controller: '\Drupal\gameengine\Controller\ProcessingEngine::getLast100Messages'
+  methods: [GET]
+  options:
+    no_cache: TRUE
+  requirements:
+    _permission: 'access content'
+
+gameengine_retrieveMessages:
+  path: '/getNewMessages/{lastIndex}'
+  defaults:
+    _controller: '\Drupal\gameengine\Controller\ProcessingEngine::retrieveMessages'
   methods: [GET]
   options:
     no_cache: TRUE

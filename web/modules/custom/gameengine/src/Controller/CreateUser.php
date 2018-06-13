@@ -26,7 +26,7 @@ class CreateUser extends ControllerBase
 			$response->send();
 			return true;
 		}
-		
+
 		$build = array(
 			'#cache' => ['max-age' => 0],
 			'#theme' => 'create_user_page',
@@ -35,42 +35,39 @@ class CreateUser extends ControllerBase
 					'atlas/gameengine-create-user'
 				)
 			)
-		);
-		
-		$build['#classList'] = getListOfClasses();
-		
+		);		
 		return $build;
 	}
-	
+
 	public function checkIfUsernameAvailable($username) {
 		$response = array(
 			'available' => false
 		);
-		
+
 		$user = user_load_by_name($username);
-		
+
 		if(!$user){
 			$response['available'] = true;
 		} else {
 			$response['available'] = false;
 		}
-		
+
 		return new JsonResponse($response);
 	}
-	
+
 	public function checkIfEmailAvailable($email){
 		$response = array(
 			'available' => false
 		);
-		
+
 		$user = user_load_by_mail($email);
-		
+
 		if(!$user){
 			$response['available'] = true;
 		} else {
 			$response['available'] = false;
 		}
-		
+
 		return new JsonResponse($response);
 	}
 }
