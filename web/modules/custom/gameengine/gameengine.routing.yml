@@ -47,3 +47,13 @@ gameengine_get100Messages:
     no_cache: TRUE
   requirements:
     _permission: 'access content'
+
+gameengine_retrieveMessages:
+  path: '/getNewMessages/{lastIndex}'
+  defaults:
+    _controller: '\Drupal\gameengine\Controller\ProcessingEngine::retrieveMessages'
+  methods: [GET]
+  options:
+    no_cache: TRUE
+  requirements:
+    _permission: 'access content'

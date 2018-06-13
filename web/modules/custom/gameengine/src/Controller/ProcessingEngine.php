@@ -20,176 +20,102 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ProcessingEngine extends ControllerBase
 {
-	 private $directions = array(
-		'up',
-		'down',
-		'left',
-		'right',
-		'north',
-		'south',
-		'east',
-		'west'
-	);
-
-	public function oldProcessText(Request $request) {
-		if ( 0 === strpos( $request->headers->get( 'Content-Type' ), 'application/json' ) ) {
-			$data = json_decode($request->getContent(), TRUE);
-
-			$action = $data['action'];
-			$target = $data['target'];
-
-			$user = User::load(\Drupal::currentUser()->id());
-
-			// Check what kind of class the user is
-			switch (strtolower($user->field_class->value)) {
-				case 'warrior':
-					$player = new Classes\Warrior($user);
-					break;
-				case 'rogue':
-					$player = new Classes\Rogue($user);
-					break;
-				case 'archer':
-					$player = new Classes\Archer($user);
-					break;
-				case 'paladin':
-					$player = new Classes\Paladin($user);
-					break;
-				default:
-					$player = new Player($user);
-					break;
-			}
-
-			$response['message'] = 'Server Error.';
-			switch(strtolower($action)){
-				case 'help':
-					$string = "Available Commands: <br />" .
-								"help <br />" .
-								"hello <br />" .
-								"look <br />" .
-								"check {inventory} <br />" .
-								"status <br />" .
-								"move/go {" . implode(", ", $this->directions) . "} <br />";
-
-					$response['message'] = $string;
-					break;
-				case 'hello':
-				case 'hi':
-				case 'howdy':
-					$response['message'] = 'Hello, ' . $player->getName() . '!';
-					break;
-				case 'look':
-					$response['message'] = 'You look around into the void, and see nothing.';
-					break;
-				case 'move':
-				case 'go':
-					if(in_array($target, $this->directions)){
-						$response['message'] = "You $action $target.";
-					} else {
-						$response['message'] = "Invalid direction.";
-					}
-					break;
-				case 'status':
-				case 'stats':
-					$string = "Status:<br />";
-					$string .= "Name: " . $player->getName() . "<br />";
-					$string .= "Class: " . $player->getClassType() . "<br />";
-					$string .= "Level: " . $player->getLevel() . "<br />";
-					$string .= "-----------------------------------<br />";
-					$string .= "Health: " . $player->getHealth() . "<br />";
-					$string .= "Attack: " . $player->getAttack() . "<br />";
-					$string .= "Defense: " . $player->getDefense() . "<br />";
-					$string .= "-----------------------------------<br />";
-					$string .= "Strength: " . $player->getStrength() . "<br />";
-					$string .= "Constitution: " . $player->getConstitution() . "<br />";
-					$string .= "Dexterity: " . $player->getDexterity() . "<br />";
-					$string .= "Charisma: " . $player->getCharisma() . "<br />";
-					$string .= "Intelligence: " . $player->getIntelligence() . "<br />";
-					$string .= "Wisdom: " . $player->getWisdom() . "<br />";
-					$response['message'] = $string;
-					break;
-				case 'itsrainingmen':
-					$response['message'] = 'Hallelujah!';
-					break;
-				case 'check':
-					if(strtolower($target) == "inventory"){
-						$string = 'Inventory:<br />';
-						$inventory = $player->getInventory();
-						foreach($inventory as $iteminfo){
-							$item = new Item($iteminfo['id']);
-							$string .= '&nbsp;&nbsp;' . $iteminfo['quantity'] .  ' X ' . $item->getName() . '<br />';
-						}
-						$response['message'] = $string;
-					} elseif(strtolower($target) == "me" || strtolower($target) == "myself" || strtolower($target) == "self") {
-						$string = "Stats:<br />";
-						$string .= "Health: " . $player->getHealth() . "<br />";
-						$string .= "Attack: " . $player->getAttack() . "<br />";
-						$string .= "Defense: " . $player->getDefense() . "<br />";
-						$response['message'] = $string;
-					} else {
-						$response['message'] = 'Invalid target for check.';
-					}
-					break;
-				case 'logout':
-					user_logout();
-					$response['message'] = 'Good Bye!';
-					$response['logout'] = true;
-					break;
-				default:
-					$response['message'] = $action . ' is not a valid action.';
-					break;
-			}
-			return new JsonResponse($response);
-		} else {
-			$response['message'] = 'Invalid action.';
-			$response['errorMessage'] = 'Not Valid JSON';
-			return new JsonResponse($response);
-		}
-	}
-	
 	public function processText(Request $request) {
 		if (0 === strpos($request->headers->get('Content-Type'),
 				'application/json')) {
 			$data = json_decode($request->getContent(), TRUE);
       $conn = \Drupal::database();
       $user = User::load(\Drupal::currentUser()->id());
-			
+
 			$message = $data['msgData'];
 			$target = $data['action'];
 			$author = $user->field_display_name->value;
-			
+
 			// Write message to the database.
-      $result = $conn->insert('chatlog')
-        ->fields([
-          'author' => $author,
-          'message' => $message['message'],
-          'target' => $target
-        ])
-        ->execute();
-      
-      // Return the message and its count so we can keep track of last messages.
-			$testMsg = [
-				'message' => [
-					"message" => $message['message'],
-					"author" => $author,
-					"date" => date('c')
-				],
-        'index' => $result->id
-			];
+			try {
+				$result = $conn->insert('chatlog')
+	        ->fields([
+	          'author' => $author,
+	          'message' => $message['message'],
+	          'target' => $target
+	        ])
+	        ->execute();
+	      // Return the message and its count so we can keep track of last messages.
+				$testMsg = [
+					'message' => [
+						"message" => $message['message'],
+						"author" => $author,
+						"date" => date('c')
+					],
+	        'lastIndex' => $result
+				];
+			}
+			catch (PDOException $e) {
+				$conn->rollback();
+				return new JsonResponse(["errorMsg" => "Error sending message."], 400);
+			}
+
 			return new JsonResponse($testMsg);
 		}
+		return new JsonResponse(["errorMsg" => "No Data"], 400);
 	}
-	
+
 	public function getLast100Messages() {
-		
+
 		$messageArray = [];
-		
+
 		$conn = \Drupal::database();
-    $results = $conn->query('SELECT id, author, message, timestamp FROM chatlog WHERE target = \'generalmessage\' ORDER BY timestamp DESC LIMIT 0, 100');
-		
+    $results = $conn->query(
+			'SELECT id, author, message, timestamp FROM chatlog WHERE target = :target ORDER BY id DESC LIMIT 100',
+			[
+				":target" => "generalmessage",
+			]
+		);
+		$lastIndex = 0;
+		foreach($results as $record) {
+			$newRecord = [
+				"id" => $record->id,
+				"author" => $record->author,
+				"message" => $record->message,
+				"date" => date('c', strtotime($record->timestamp))
+			];
+			$messageArray[] = $newRecord;
+			$lastIndex = ($lastIndex < $record->id ? $record->id : $lastIndex);
+		}
+		// sort message array by id.
+		usort($messageArray, function($a, $b) {
+			if ($a['id'] === $b['id']){
+				return 0;
+			}
+			return ($a['id'] > $b['id'] ? 1 : -1);
+		});
+
+		return new JsonResponse([
+			"lastIndex" => $lastIndex,
+			"messages" => $messageArray,
+		]);
+	}
+
+	public function retrieveMessages($lastIndex) {
+		$messageArray = [];
+		$lastIndexNew = $lastIndex;
+		$conn = \Drupal::database();
+    $results = $conn->query(
+			'SELECT id, author, message, timestamp FROM chatlog WHERE target = :target AND id > :lastIndex ORDER BY timestamp ASC',
+			[
+				":target" => "generalmessage",
+				":lastIndex" => $lastIndex,
+			]
+		);
+
 		foreach($results as $record) {
 			$messageArray[] = $record;
+			$lastIndexNew = ($lastIndexNew < $record->id ? $record->id : $lastIndexNew);
 		}
-		
-		return new JsonResponse($messageArray);
+
+		return new JsonResponse([
+			'lastIndex' => $lastIndexNew,
+			'messages' => $messageArray,
+		]);
 	}
 }
