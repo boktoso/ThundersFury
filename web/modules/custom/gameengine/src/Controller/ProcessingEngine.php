@@ -30,14 +30,15 @@ class ProcessingEngine extends ControllerBase
 			$message = $data['msgData'];
 			$target = $data['action'];
 			$author = $user->field_display_name->value;
-
+			$userIp = getClientIp();
 			// Write message to the database.
 			try {
 				$result = $conn->insert('chatlog')
 	        ->fields([
 	          'author' => $author,
 	          'message' => $message['message'],
-	          'target' => $target
+	          'target' => $target,
+						'ip_address' => $userIp,
 	        ])
 	        ->execute();
 	      // Return the message and its count so we can keep track of last messages.
