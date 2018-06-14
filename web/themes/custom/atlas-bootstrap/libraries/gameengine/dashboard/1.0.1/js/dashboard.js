@@ -26,6 +26,7 @@ var sendingMessage = false;
 
   function getNewMessages(){
     if(!sendingMessage) {
+      sendingMessage = true;
       $.ajax({
         url: '/getNewMessages/' + lastIndex,
         success: function(data) {
@@ -36,8 +37,10 @@ var sendingMessage = false;
             // Format the message
             addToWorldText(msg);
           });
+          sendingMessage = false;
         },
         error: function(xhr) {
+          sendingMessage = false;
           postErrorMessage();
         }
       });
