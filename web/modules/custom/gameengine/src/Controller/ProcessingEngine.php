@@ -46,7 +46,7 @@ class ProcessingEngine extends ControllerBase
 					'message' => [
 						"message" => $message['message'],
 						"author" => $author,
-						"date" => date('c', strtotime($record->timestamp))
+						"date" => date('c')
 					],
 	        'lastIndex' => $result
 				];
@@ -78,7 +78,7 @@ class ProcessingEngine extends ControllerBase
 				"id" => $record->id,
 				"author" => $record->author,
 				"message" => $record->message,
-				"date" => date('c', strtotime($record->timestamp))
+				"date" => date('c')
 			];
 			$messageArray[] = $newRecord;
 			$lastIndex = ($lastIndex < $record->id ? $record->id : $lastIndex);
