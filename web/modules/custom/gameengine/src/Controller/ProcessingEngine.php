@@ -46,7 +46,7 @@ class ProcessingEngine extends ControllerBase
 					'message' => [
 						"message" => $message['message'],
 						"author" => $author,
-						"date" => date('c')
+						"date" => date('c', strtotime($record->timestamp))
 					],
 	        'lastIndex' => $result
 				];
