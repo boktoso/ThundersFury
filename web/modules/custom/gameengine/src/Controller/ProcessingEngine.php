@@ -78,7 +78,7 @@ class ProcessingEngine extends ControllerBase
 				"id" => $record->id,
 				"author" => $record->author,
 				"message" => $record->message,
-				"date" => date('c')
+				"date" => date('c', strtotime($record->timestamp))
 			];
 			$messageArray[] = $newRecord;
 			$lastIndex = ($lastIndex < $record->id ? $record->id : $lastIndex);
