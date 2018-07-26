@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup metrics
+ */
+function katy_ai_schema() {
+  $schema['katy_ai_messages'] = [
+    'description' => 'Basic Table to hold responses and helper text for Katy.',
+    'fields' => [
+      'uid' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => "Unique ID for the record",
+      ],
+      'regex' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The regex we use to check if the message matches.',
+      ],
+      'triggerText' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Trigger to call this message response.',
+      ],
+      'response' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The response, can be a function call or a static response.',
+      ],
+      'options' => [
+        'type' => 'blob',
+        'not null' => FALSE,
+        'description' => 'Optional data required stored as JSON.',
+      ],
+      'helper' => [
+        'type' => 'text',
+        'not null' => FALSE,
+        'description' => 'Helper Text for the user to describe this function.',
+      ],
+    ],
+    'primary key' => [
+      'uid',
+    ],
+  ];
+
+  return $schema;
+}
+
+function katy_ai_install(){
+  $defaultMessages = [
+    [
+      'regex' => '((Hello|Hi) Katy){1}',
+      'triggerText' => 'hello',
+      'response' => 'Hello %1, how can I help you today?',
+      'options' => '{\"params\":{\"%1\":\"{{ author }}\"}}',
+      'helper' => 'This is just a simple hello.',
+    ],
+    [
+      'regex' => '(what time is it|what is the time|what is the current time|tell me the time){1}',
+      'triggerText' => 'time',
+      'response' => 'The time is %1',
+      'options' => '{\"params\":{\"%1\":\"{{ time }}\"}}',
+      'helper' => 'This retuns the current time.',
+    ],
+    [
+      'regex' => '(what is the weather for ([a-zA-Z0-9])){1}',
+      'triggerText' => 'weather',
+      'response' => 'The weather for %1 is %2',
+      'options' => '{\"params\":{\"%1\":\"{{ location }}\",\"%2\":\"{{ weatherReport }}\"}, \"function\":\"Katy_Knowledge::getWeather()\"}',
+      'helper' => 'This returns the weather for a location.  Should be used as \"Katy, what is the weather for LOCATION\"',
+    ],
+  ];
+
+  $conn = \Drupal::database();
+
+  // Add the messages to the db.
+  foreach($defaultMessages as $key => $message) {
+    $conn->insert('katy_ai_messages')
+    ->fields($message)
+    ->execute();
+  }
+}

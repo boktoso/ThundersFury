@@ -6,7 +6,7 @@ gameengine_dashboard:
   options:
       no_cache: TRUE
   requirements:
-      _role: 'anonymous+authenticated'
+      _role: 'authenticated'
 
 gameengine_process:
   path: '/process'

@@ -1,0 +1,7 @@
+name: Katy AI
+type: module
+description: 'Welcome!  My name is Katy and I am an AI to help with your chat and commands.'
+package: Artifical Intelligence
+version: 1.0
+core: 8.x
+hidden: false
