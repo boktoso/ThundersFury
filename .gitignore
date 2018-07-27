@@ -1,0 +1,4 @@
+.idea
+vendor
+web/sites/default/files
+web/sites/default/files/*
