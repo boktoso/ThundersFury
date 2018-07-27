@@ -38,42 +38,15 @@ function gameengine_user_login($account) {
 }
 
 /**
- * Implements hook_user_insert().
- */
-function gameengine_user_insert(&$edit, $account, $category) {
-	// create connecting tables
-	
-	// user's equipment table
-	$query = \Drupal::database()->query(
-		'INSERT INTO user__equipment SET (entity_id) VALUE (:uid)',
-		[
-			'uid' => $account->uid
-		]
-	);
-
-	$query->execute();
-
-	// user's inventory table
-	$query = \Drupal::database()->query(
-		'INSERT INTO user__inventory SET (entity_id) VALUE (:uid)',
-		[
-			'uid' => $account->uid
-		]
-	);
-
-	$query->execute();
-}
-
-/**
  * Return a list of Classes from the DB
  *
  * @return array
  */
 function getListOfClasses(){
 	$query = \Drupal::database()->query('SELECT uid, class as name FROM thunderfury__classes ORDER BY class ASC');
-	
+
 	$result = $query->fetchAll();
-	
+
 	return $result;
 }
 
@@ -94,4 +67,24 @@ function getClientIp() {
 	else
 		$ipAddress = 'UNKNOWN';
 	return $ipAddress;
+}
+
+/**
+ * Alter form for custom additions.
+ *
+ * @param array $form
+ *   Form.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Form State.
+ * @param string $form_id
+ *   Form ID.
+ */
+function gameengine_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'user_login_form') {
+    $form['actions']['newCustomer'] = [
+      '#prefix' => '<a class="basic-link padding-left-5" href="/user/create">',
+      '#markup' => 'Don\'t have an account?',
+      '#suffix' => '</a>',
+    ];
+  }
 }
