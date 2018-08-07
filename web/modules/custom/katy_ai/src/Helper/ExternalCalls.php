@@ -16,7 +16,7 @@ class ExternalCalls {
     $response = json_decode($response, TRUE);
     $weather = $response['weather'][0];
     $main = $response['main'];
-    $message = $main['temp'] . ' degrees F with a low of ' . $main['temp_min'] . ' and a high of ' . $main['temp_max'] . ' with ' . $weather['description'] . '.';
+    $message = $main['temp'] . '&deg;F with a low of ' . $main['temp_min'] . '&deg;F and a high of ' . $main['temp_max'] . '&deg;F with ' . $weather['description'] . '.';
 
     return $message;
   }
