@@ -3,6 +3,7 @@
 namespace Drupal\katy_ai\Controller;
 
 use Drupal\katy_ai\Entity\Katy_Knowledge;
+use Drupal\katy_ai\Helper\ExternalCalls;
 
 class KatyController
 {
@@ -29,6 +30,24 @@ class KatyController
         $options = json_decode($match['options'], TRUE);
         if(!empty($options['params'])) {
           foreach($options['params'] as $key => $v) {
+            $messageResponse = str_replace($key, $v, $messageResponse);
+          }
+        }
+        if(!empty($options['function'])) {
+          // Run the function.
+          switch($options['function']) {
+            case 'getWeather' :
+              // get the location from the message.
+              $location = $matches[2];
+              $params = [
+                '{{ weatherReport }}' => ExternalCalls::getWeather($location),
+                '{{ location }}' => $location,
+              ];
+              break;
+            default:
+              break;
+          }
+          foreach($params as $key => $v) {
             $messageResponse = str_replace($key, $v, $messageResponse);
           }
         }

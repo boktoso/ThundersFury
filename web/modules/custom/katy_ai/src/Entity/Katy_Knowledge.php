@@ -30,10 +30,10 @@ class Katy_Knowledge {
         'helper' => 'This retuns the current time.',
       ],
       [
-        'regex' => '(what is the weather for ([a-zA-Z0-9])){1}',
+        'regex' => '(what is the weather for ){1}([a-zA-Z0-9\,\s]*)',
         'triggerText' => 'weather',
         'response' => 'The weather for %1 is %2',
-        'options' => '{"params":{"%1":"{{ location }}","%2":"{{ weatherReport }}"}, "function":"Katy_Knowledge::getWeather()"}',
+        'options' => '{"params":{"%1":"{{ location }}","%2":"{{ weatherReport }}"}, "function":"getWeather"}',
         'helper' => 'This returns the weather for a location.  Should be used as "Katy, what is the weather for LOCATION"',
       ],
     ];
