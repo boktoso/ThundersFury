@@ -2,74 +2,104 @@
 
 namespace Drupal\gameengine\Controller;
 
-use Drupal\Component\Serialization\Json;
-use Drupal\Core\Controller\ControllerBase;
-use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Gumlet\ImageResize;
+use Gumlet\ImageResizeException;
 
-class ResizeImage extends ControllerBase
-{
+/**
+ * Class ResizeImage.
+ *
+ * @package Drupal\gameengine\Controller
+ */
+class ResizeImage {
+
   /**
-   * Resize a file image to 200 x 200 keeping ratio.
+   * ResizeImage constructor.
+   */
+  public function __construct() {
+  }
+
+  /**
+   * Resize the thumbnail.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   Request.
+   * @param string $apiVersion
+   *   Api Version.
+   *
+   * @return \Symfony\Component\HttpFoundation\JsonResponse
+   *   Returns JSON response.
    */
   public function resizeImageToThumb(Request $request, $apiVersion) {
     $data = $request->files->all();
-    foreach($data as $fName => $file) {
-      $fileData = file_get_content($file->getClientOriginalName());
-      $newImg = $this->resizeIamge($fileData);
-      if(is_null($newImg)) {
-        $response = [
-          "errorMessage" => "Failed to resize the image"
-        ];
+    $response = [];
+    if (!empty($data)) {
+      foreach ($data as $fName => $file) {
+        try {
+          $fileData = file_get_contents($file->getClientOriginalName());
+          $newImg = $this->resizeImage($fileData);
+        }
+        catch (\Exception $e) {
+          $newImg = NULL;
+        }
+        if (is_null($newImg)) {
+          $response = [
+            "errorMessage" => "Failed to resize the image",
+          ];
+        }
+        else {
+          $response = [
+            "img" => base64_encode($newImg->getImageAsString()),
+          ];
+        }
       }
-      else {
-        $response = [
-          "img" => base64_encode($newImg->getImageAsString()));
-        ];
-      }
-      return new JsonResponse($response);
     }
+    else {
+      $response = [
+        "errorMessage" => "No Image",
+      ];
+    }
+
+    return new JsonResponse($response);
   }
 
   /**
-   * Taking BASE64, creating an image, and then making it 200 x 200 keeping ratio.
+   * Resize BASE64.
+   *
+   * Taking BASE64, creating an image, and then making it 200 x 200 keeping
+   * ratio.
    */
   public function resizeBase64ToThumb(Request $request, $apiVersion) {
-      return new JsonResponse([
-        'errorMessage' => 'Not Implemented',
-      ]);
+    return new JsonResponse([
+      'errorMessage' => 'Not Implemented',
+    ]);
   }
 
   /**
-   * Resize the file.
+   * Resize the Image.
    *
    * @param string $file
-   *   String content of the file.
+   *   File String.
    *
-   * @return ImageResize|NULL
-   *  Returns ImageResize object if success, NULL otherwise.
+   * @return \Gumlet\ImageResize|null
+   *   Returns Gumlet Image if success, NULL otherwise.
+   *
+   * @throws \Gumlet\ImageResizeException
+   *   Throws ImageResizeException.
    */
-  public function resizeIamge($file) {
+  public function resizeImage($file) {
     try {
       $thumbnail = new ImageResize($file);
-      try {
-        $thumbnail->resizeToBestFit(200, 200, TRUE);
-        return $thumbnail;
-      }
-      catch (ImageResizeException $e) {
-        return NULL;
-      }
-      catch (Exception $e) {
-        return NULL;
-      }
+      $thumbnail->resizeToBestFit(200, 200, TRUE);
+      return $thumbnail;
     }
     catch (ImageResizeException $e) {
       return NULL;
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
       return NULL;
     }
   }
+
 }
