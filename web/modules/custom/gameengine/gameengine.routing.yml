@@ -57,3 +57,19 @@ gameengine_retrieveMessages:
     no_cache: TRUE
   requirements:
     _permission: 'access content'
+
+gameengine_restResizeImage:
+  path: '/rest/api/{apiVersion}/resize'
+  defaults:
+    _controller: '\Drupal\gameengine\Controller\ResizeImage::resizeImageToThumb'
+  methods: [POST]
+  options:
+    no_cache: TRUE
+
+gameengine_restResizeImageBase64:
+  path: '/rest/api/{apiVersion}/resizebase64'
+  defaults:
+    _controller: '\Drupal\gameengine\Controller\ResizeImage::resizeBase64ToThumb'
+  methods: [POST]
+  options:
+    no_cache: TRUE
