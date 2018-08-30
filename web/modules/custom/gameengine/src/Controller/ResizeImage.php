@@ -14,6 +14,10 @@ use Gumlet\ImageResizeException;
  */
 class ResizeImage {
 
+  const FILE_TYPE = 1;
+  const BASE64_TYPE = 2;
+  const STRING_TYPE = 3;
+
   /**
    * ResizeImage constructor.
    */
@@ -43,7 +47,7 @@ class ResizeImage {
           $filename = is_int($fName) ? $file->getClientOriginalName() : self::str_replace_last('_',
             '.', $fName);
           $file->move($newPath, $filename);
-          $newImg = $this->resizeImage($newPath . $filename);
+          $newImg = $this->resizeImage($newPath . $filename, FILE_TYPE);
         }
         catch (\Exception $e) {
           \Drupal::logger('gameengine')->alert($e->getMessage());
@@ -69,7 +73,7 @@ class ResizeImage {
 
     return new JsonResponse($response);
   }
-  
+
   /**
    * Resize BASE64.
    *
@@ -77,9 +81,44 @@ class ResizeImage {
    * ratio.
    */
   public function resizeBase64ToThumb(Request $request, $apiVersion) {
-    return new JsonResponse([
-      'errorMessage' => 'Not Implemented',
-    ]);
+    $response = [];
+    $data = json_decode($request->getContent(), TRUE);
+    if (!empty($data['fileData'])) {
+      $fileData = $data['fileData'];
+      try {
+        if(strpos($fileData, 'data:') === FALSE) {
+          $newImg = $this->resizeImage($fileData, self::STRING_TYPE);
+        }
+        else {
+          preg_match('/data:image\/[jpeg|png|gif]*;base64,([^"]*)/', $fileData, $matches);
+          if (count($matches) > 1) {
+            $fileData = $matches[1];
+            $newImg = $this->resizeImage($fileData, self::BASE64_TYPE);
+          }
+        }
+      }
+      catch (\Exception $e) {
+        \Drupal::logger('gameengine')->alert($e->getMessage());
+        $newImg = NULL;
+      }
+      if (is_null($newImg)) {
+        $response = [
+          "errorMessage" => "Failed to resize the image",
+        ];
+      }
+      else {
+        $response = [
+          "img" => base64_encode($newImg->getImageAsString()),
+        ];
+      }
+    }
+    else {
+      $response = [
+        "errorMessage" => "No Image",
+      ];
+    }
+
+    return new JsonResponse($response);
   }
 
   /**
@@ -94,9 +133,25 @@ class ResizeImage {
    * @throws \Gumlet\ImageResizeException
    *   Throws ImageResizeException.
    */
-  public function resizeImage($file) {
+  public function resizeImage($file, $type = 1) {
     try {
-      $thumbnail = new ImageResize($file);
+      switch ($type) {
+        case self::FILE_TYPE:
+          $thumbnail = new ImageResize($file);
+          break;
+
+        case self::BASE64_TYPE:
+          $thumbnail = ImageResize::createFromString(base64_decode($file));
+          break;
+
+        case self::STRING_TYPE:
+          $thumbnail = ImageResize::createFromString($file);
+          break;
+
+        default:
+          break;
+      }
+
       $thumbnail->resizeToBestFit(200, 200, TRUE);
       return $thumbnail;
     }
@@ -130,5 +185,5 @@ class ResizeImage {
     }
     return $str;
   }
-  
+
 }
