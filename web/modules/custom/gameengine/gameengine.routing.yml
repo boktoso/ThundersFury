@@ -65,6 +65,8 @@ gameengine_restResizeImage:
   methods: [POST]
   options:
     no_cache: TRUE
+  requirements:
+      _role: 'anonymous+authenticated'
 
 gameengine_restResizeImageBase64:
   path: '/rest/api/{apiVersion}/resizebase64'
@@ -73,3 +75,5 @@ gameengine_restResizeImageBase64:
   methods: [POST]
   options:
     no_cache: TRUE
+  requirements:
+    _role: 'anonymous+authenticated'

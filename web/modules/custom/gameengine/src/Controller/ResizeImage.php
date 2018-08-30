@@ -37,10 +37,16 @@ class ResizeImage {
     if (!empty($data)) {
       foreach ($data as $fName => $file) {
         try {
-          $fileData = file_get_contents($file->getClientOriginalName());
-          $newImg = $this->resizeImage($fileData);
+          $timeStamp = time();
+          $newPath = sys_get_temp_dir() . '/' . $timeStamp . '/';
+          mkdir($newPath);
+          $filename = is_int($fName) ? $file->getClientOriginalName() : self::str_replace_last('_',
+            '.', $fName);
+          $file->move($newPath, $filename);
+          $newImg = $this->resizeImage($newPath . $filename);
         }
         catch (\Exception $e) {
+          \Drupal::logger('gameengine')->alert($e->getMessage());
           $newImg = NULL;
         }
         if (is_null($newImg)) {
@@ -63,7 +69,7 @@ class ResizeImage {
 
     return new JsonResponse($response);
   }
-
+  
   /**
    * Resize BASE64.
    *
@@ -80,7 +86,7 @@ class ResizeImage {
    * Resize the Image.
    *
    * @param string $file
-   *   File String.
+   *   File Location String.
    *
    * @return \Gumlet\ImageResize|null
    *   Returns Gumlet Image if success, NULL otherwise.
@@ -95,11 +101,34 @@ class ResizeImage {
       return $thumbnail;
     }
     catch (ImageResizeException $e) {
+      \Drupal::logger('gameengine')->alert($e->getMessage());
       return NULL;
     }
     catch (\Exception $e) {
+      \Drupal::logger('gameengine')->alert($e->getMessage());
       return NULL;
     }
   }
 
+  /**
+   * Replace last in string.
+   *
+   * @param string $search
+   *   Char to find.
+   * @param string $replace
+   *   Char to replace.
+   * @param string $str
+   *   String.
+   *
+   * @return mixed
+   *   Returns the new string.
+   */
+  public static function str_replace_last($search, $replace, $str) {
+    if (($pos = strrpos($str, $search)) !== FALSE) {
+      $search_length = strlen($search);
+      $str = substr_replace($str, $replace, $pos, $search_length);
+    }
+    return $str;
+  }
+  
 }
