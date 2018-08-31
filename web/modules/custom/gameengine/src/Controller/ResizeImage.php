@@ -43,11 +43,17 @@ class ResizeImage {
         try {
           $timeStamp = time();
           $newPath = sys_get_temp_dir() . '/' . $timeStamp . '/';
-          mkdir($newPath);
-          $filename = is_int($fName) ? $file->getClientOriginalName() : self::str_replace_last('_',
-            '.', $fName);
+          if(!file_exists($newPath)) {
+            @mkdir($newPath);
+          }
+          $filename = is_int($fName) ? $file->getClientOriginalName() : self::str_replace_last('_', '.', $fName);
           $file->move($newPath, $filename);
-          $newImg = $this->resizeImage($newPath . $filename, FILE_TYPE);
+          if(file_exists($newPath . $filename)) {
+            $newImg = $this->resizeImage($newPath . $filename, self::FILE_TYPE);
+          }
+          else {
+            return new JsonResponse(['errorMessage' => 'Failed to move file to temp directory.']);
+          }
         }
         catch (\Exception $e) {
           \Drupal::logger('gameengine')->alert($e->getMessage());
@@ -151,7 +157,9 @@ class ResizeImage {
         default:
           break;
       }
-
+      if($thumbnail === NULL) {
+        throw new \Exception('Could not initialize resizer.');
+      }
       $thumbnail->resizeToBestFit(200, 200, TRUE);
       return $thumbnail;
     }
