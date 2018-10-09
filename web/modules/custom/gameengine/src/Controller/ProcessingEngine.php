@@ -17,6 +17,7 @@ use Drupal\class_engine\Entity\Player;
 use Drupal\class_engine\Entity\Classes;
 use Drupal\gameengine\Plugin\Content\Item;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\katy_ai\Controller\KatyController;
 
 class ProcessingEngine extends ControllerBase
 {
@@ -50,6 +51,29 @@ class ProcessingEngine extends ControllerBase
 					],
 	        'lastIndex' => $result
 				];
+				if(
+					strtolower(substr($message['message'], 0, 4)) === 'katy'
+						||
+					strtolower($message['message']) === 'hi katy'
+						||
+					strtolower($message['message']) === 'hello katy'
+				) {
+					$Katy = new KatyController();
+					$response = $Katy->processText($message['message'], [ "author" => $author ]);
+					try {
+						$result = $conn->insert('chatlog')
+			        ->fields([
+			          'author' => 'Katy',
+			          'message' => $response,
+			          'target' => $target,
+								'ip_address' => 'Katy',
+			        ])
+			        ->execute();
+					}
+					catch (PDOException $e) {
+						$conn->rollback();
+					}
+				}
 			}
 			catch (PDOException $e) {
 				$conn->rollback();
