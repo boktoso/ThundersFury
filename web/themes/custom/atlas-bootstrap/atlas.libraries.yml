@@ -19,12 +19,12 @@ gameengine-globals:
   - core/jquery
 
 gameengine-dashboard:
-  version: 1.0.1
+  version: 1.0.2
   js:
-    libraries/gameengine/dashboard/1.0.1/js/dashboard.js: {}
+    libraries/gameengine/dashboard/1.0.2/js/dashboard.js: {}
   css:
     theme:
-          libraries/gameengine/dashboard/1.0.1/css/dashboard.css: {}
+          libraries/gameengine/dashboard/1.0.2/css/dashboard.css: {}
   dependencies:
   - core/jquery
   - atlas/moment

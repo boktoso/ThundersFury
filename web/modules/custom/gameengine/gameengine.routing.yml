@@ -6,7 +6,7 @@ gameengine_dashboard:
   options:
       no_cache: TRUE
   requirements:
-      _role: 'authenticated'
+    _role: 'authenticated'
 
 gameengine_process:
   path: '/process'
@@ -16,7 +16,7 @@ gameengine_process:
   options:
     no_cache: TRUE
   requirements:
-    _permission: 'access content'
+    _role: 'authenticated'
 
 gameengine_create_user:
   path: '/user/create'
