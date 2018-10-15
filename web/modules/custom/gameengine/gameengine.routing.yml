@@ -5,8 +5,6 @@ gameengine_dashboard:
     _title: 'Dashboard'
   options:
       no_cache: TRUE
-  requirements:
-    _role: 'authenticated'
 
 gameengine_process:
   path: '/process'
