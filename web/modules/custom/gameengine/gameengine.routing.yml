@@ -4,7 +4,9 @@ gameengine_dashboard:
     _controller: '\Drupal\gameengine\Controller\Dashboard::content'
     _title: 'Dashboard'
   options:
-      no_cache: TRUE
+    no_cache: TRUE
+  requirements:
+    _role: 'anonymous+authenticated'
 
 gameengine_process:
   path: '/process'
