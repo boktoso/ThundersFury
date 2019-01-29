@@ -18,15 +18,15 @@ gameengine_process:
   requirements:
     _role: 'authenticated'
 
-gameengine_create_user:
-  path: '/user/create'
-  defaults:
-    _form: '\Drupal\gameengine\Form\CreateUserForm'
-    _title: 'Create New User'
-  options:
-    no_cache: TRUE
-  requirements:
-    _role: 'anonymous'
+# gameengine_create_user:
+#   path: '/user/create'
+#   defaults:
+#     _form: '\Drupal\gameengine\Form\CreateUserForm'
+#     _title: 'Create New User'
+#   options:
+#     no_cache: TRUE
+#   requirements:
+#     _role: 'anonymous'
 
 gameengine_checkusername:
   path: '/checkusername/{username}'

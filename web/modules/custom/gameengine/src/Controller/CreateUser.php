@@ -35,7 +35,7 @@ class CreateUser extends ControllerBase
 					'atlas/gameengine-create-user'
 				)
 			)
-		);		
+		);
 		return $build;
 	}
 
