@@ -44,18 +44,6 @@ function resizeTables(sharedSize){
 	});
 }
 
-function renderAttachments(id, name){
-	var dataArray =  [id,name];
-	var ntWork = new Worker("/themes/custom/atlas-bootstrap/libraries/sitehands/workers/noteworker.js");
-	ntWork.postMessage(dataArray);
-	var note = '';
-	ntWork.onmessage = function(e) {
-		note += e.data;
-		//console.log("notes "+JSON.stringify(e.data));
-		jQuery('#'+id).html(note);
-	}
-}
-
 jQuery.fn.removeInlineCss = (function(){
 	var rootStyle = document.documentElement.style;
 	var remover =
