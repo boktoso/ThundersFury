@@ -1,0 +1,32 @@
+.world-text-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.user-text-wrapper {
+  width: 100%;
+  overflow: hidden;
+  height: 3em;
+}
+
+.user-input-wrapper{
+  width: 100%;
+  position: relative;
+}
+
+.user-input-field {
+  background: black;
+  border: none;
+  border-bottom: 1px solid;
+  padding-left: 15px;
+  width: 100%;
+}
+
+.console-chevron {
+  position: absolute;
+  color: #00ff00;
+  bottom: 4px;
+  left: 20px;
+  z-index: 100;
+}
