@@ -1,0 +1,22 @@
+uuid: 1e0b0cd9-526e-40d3-a7d4-fa17fb7c4f56
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - atlas
+_core:
+  default_config_hash: za-39d5WDUg6XvbyqSnuVYEeq6QM4qKJxW8MnoAha5A
+id: atlas_search
+theme: atlas
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

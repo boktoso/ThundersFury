@@ -1,0 +1,20 @@
+uuid: fa79b7bb-7e22-4a7c-975c-d3492462278d
+langcode: en
+status: true
+dependencies:
+  theme:
+    - atlas
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: atlas_local_actions
+theme: atlas
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

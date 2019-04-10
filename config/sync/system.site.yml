@@ -1,0 +1,14 @@
+uuid: 28e99c3f-d97d-4510-8c50-781f9583aaf1
+name: thunder
+mail: thunder@localhost.net
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /dashboard
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

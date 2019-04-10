@@ -1,0 +1,22 @@
+uuid: 1938f5db-f0f2-4e60-8639-5692e962b917
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - atlas
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: atlas_breadcrumbs
+theme: atlas
+region: navigation
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

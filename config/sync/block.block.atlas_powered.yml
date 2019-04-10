@@ -1,0 +1,22 @@
+uuid: 212bddc5-b88e-4b15-bbfc-01b9edcb5e0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - atlas
+_core:
+  default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
+id: atlas_powered
+theme: atlas
+region: navigation
+weight: 10
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }
